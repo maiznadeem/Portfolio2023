@@ -376,6 +376,7 @@ body.navbar-collapse.show {
     }
     .card {
         flex: 100% !important;
+        max-width: 100% !important;
     }
     .contact h2 {
         font-size: 30px !important;
@@ -685,6 +686,7 @@ body.navbar-collapse.show {
     margin: 5px;
     align-self: stretch;
     flex: 32%;
+    max-width: calc(100% / 3 - 10px);
 }
 .card:hover > .proj-container {
     background: rgb(26, 26, 26, 0.6);

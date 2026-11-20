@@ -8,6 +8,8 @@ import ThirdProjectHTML from '../assets/projectshtml/ThirdProjectHTML';
 import FourthProjectHTML from '../assets/projectshtml/FourthProjectHTML';
 import FifthProjectHTML from '../assets/projectshtml/FifthProjectHTML';
 import SixthProjectHTML from '../assets/projectshtml/SixthProjectHTML';
+import SeventhProjectHTML from '../assets/projectshtml/SeventhProjectHTML';
+import EighthProjectHTML from '../assets/projectshtml/EighthProjectHTML';
 
 const CustomModal = ({ id, title, description, imgUrl, url, banUrl, showModal, toggleModal }) => {
     const [show, setShow] = useState(showModal);
@@ -44,6 +46,8 @@ const CustomModal = ({ id, title, description, imgUrl, url, banUrl, showModal, t
                         { id === 4 && <FourthProjectHTML />}
                         { id === 5 && <FifthProjectHTML />}
                         { id === 6 && <SixthProjectHTML />}
+                        { id === 7 && <SeventhProjectHTML />}
+                        { id === 8 && <EighthProjectHTML />}
                     </Modal.Body>
                 </div>
             </Modal>

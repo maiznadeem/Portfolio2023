@@ -5,12 +5,16 @@ import projImg3 from "../assets/projects/proj3.png";
 import projImg4 from "../assets/projects/proj4.png";
 import projImg5 from "../assets/projects/proj5.png";
 import projImg6 from "../assets/projects/proj6.png";
+import projImg7 from "../assets/projects/proj7.png";
+import projImg8 from "../assets/projects/proj8.png";
 import projBan1 from "../assets/banners/proj1.png";
 import projBan2 from "../assets/banners/proj2.png";
 import projBan3 from "../assets/banners/proj3.png";
 import projBan4 from "../assets/banners/proj4.png";
 import projBan5 from "../assets/banners/proj5.png";
 import projBan6 from "../assets/banners/proj6.png";
+import projBan7 from "../assets/banners/proj7.png";
+import projBan8 from "../assets/banners/proj8.png";
 import thumb1 from "../assets/thumbnails/Thumbnail1.jpg";
 import thumb2 from "../assets/thumbnails/Thumbnail2.jpg";
 import thumb3 from "../assets/thumbnails/Thumbnail3.jpg";
@@ -30,6 +34,22 @@ const Projects = () => {
 
     const projects = [
         {
+            id: 7,
+            title: "HelpHive - Hospitality Staffing",
+            description: "A marketplace where hotels book staff by the shift: web app, Android app and admin console on one Node.js API, with Stripe payments",
+            imgUrl: projImg7,
+            url: "https://github.com/Helphive",
+            banUrl: projBan7,
+        },
+        {
+            id: 8,
+            title: "Great Read - Non-Fiction Books",
+            description: "A non-fiction book discovery site with 2,100+ books, quotes, a reading-list builder and paid study notes through Stripe",
+            imgUrl: projImg8,
+            url: "https://github.com/maiznadeem/great-read",
+            banUrl: projBan8,
+        },
+        {
             id: 1,
             title: "Homyz - Real Estate Website",
             description: "A comprehensive real estate website that simplifies property search and transactions",
@@ -47,10 +67,10 @@ const Projects = () => {
         },
         {
             id: 3,
-            title: "Lifestream - Blood Donation",
-            description: "A user-friendly, enterprise level WPF-based Blood Donation System with a robust database",
+            title: "Lifestream - Blood Bank",
+            description: "A blood bank management desktop app, rebuilt on .NET 11 with a WPF client, an ASP.NET Core API and Azure SQL",
             imgUrl: projImg3,
-            url: "https://github.com/MaizNadeem/Lifestream-WPF",
+            url: "https://github.com/maiznadeem/lifestream",
             banUrl: projBan3,
         },
         {
