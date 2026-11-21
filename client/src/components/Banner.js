@@ -6,6 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 import headerImg from "../assets/img/header-img.svg";
+import { downloadResume } from "../utils/resume";
 
 import 'animate.css';
 
@@ -52,10 +53,6 @@ const Banner = () => {
     // eslint-disable-next-line
     }, [text])
 
-    const handleDownloadResume = () => {
-        window.location.href = "https://personal-portfolio-server-maiznadeem.vercel.app/download-resume";
-    };
-
     return (
         <section className="banner" id="home">
         <Container>
@@ -65,7 +62,7 @@ const Banner = () => {
                     <span className="tagline">Welcome to my Portfolio</span>
                     <h1>{`Hi! I'm Maiz,`} <span className="txt-rotate"><span className="wrap">{text}</span></span></h1>
                     <p>Dedicated to creating captivating digital experiences. With a blend of technical expertise and creative flair, I bring ideas to life through code and visual storytelling. As a lifelong learner, I'm always seeking new ways to push the boundaries of what's possible in the digital realm.</p>
-                    <button onClick={handleDownloadResume}>Download Resume <ArrowRightCircle size={25} /></button>
+                    <button onClick={downloadResume}>Download Resume <ArrowRightCircle size={25} /></button>
                     <p className="text-white mt-2 text-sm">Or, Email: <span className="text-[#aaa6a6]">contact.maiznadeem@gmail.com</span></p>
                 </div>
             </Col>
