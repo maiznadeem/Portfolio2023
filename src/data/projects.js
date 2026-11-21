@@ -6,16 +6,12 @@ import homyzCard from "../assets/projects/proj1.png";
 import deliverooCard from "../assets/projects/proj2.png";
 import lifestreamCard from "../assets/projects/proj3.png";
 import nftCard from "../assets/projects/proj4.png";
-import pigCard from "../assets/projects/proj5.png";
-import zegoCard from "../assets/projects/proj6.png";
 import helphiveBanner from "../assets/banners/proj7.png";
 import greatReadBanner from "../assets/banners/proj8.png";
 import homyzBanner from "../assets/banners/proj1.png";
 import deliverooBanner from "../assets/banners/proj2.png";
 import lifestreamBanner from "../assets/banners/proj3.png";
 import nftBanner from "../assets/banners/proj4.png";
-import pigBanner from "../assets/banners/proj5.png";
-import zegoBanner from "../assets/banners/proj6.png";
 
 // Each link has a kind: live, download, article or source (sets its icon).
 export const projects = [
@@ -102,34 +98,6 @@ export const projects = [
             { kind: "source", label: "Source code", href: "https://github.com/MaizNadeem/NFT-Marketplace" },
         ],
         Content: lazy(() => import("../projects/content/NftMarketplace")),
-    },
-    {
-        slug: "pig-game",
-        name: "Pig Game",
-        tagline: "Two-player dice game",
-        summary: "Roll to 100 before your opponent, but a 1 wipes out the turn. A browser game in plain JavaScript.",
-        image: pigCard,
-        banner: pigBanner,
-        tech: ["HTML", "CSS", "JavaScript"],
-        links: [
-            { kind: "live", label: "Play the game", href: "https://maiznadeem.github.io/Pig-Game/" },
-            { kind: "source", label: "Source code", href: "https://github.com/MaizNadeem/Pig-Game" },
-        ],
-        Content: lazy(() => import("../projects/content/PigGame")),
-    },
-    {
-        slug: "zego-chat",
-        name: "ZEGOCLOUD Chat",
-        tagline: "In-app chat for React Native",
-        summary: "A sample React Native app showing how to add ZEGOCLOUD in-app chat, with a step-by-step Medium article.",
-        image: zegoCard,
-        banner: zegoBanner,
-        tech: ["React Native", "ZEGOCLOUD"],
-        links: [
-            { kind: "article", label: "Read the article", href: "https://maiznadeem.medium.com/how-to-integrate-zego-cloud-in-app-chat-into-your-react-native-application-b43d203c57e5" },
-            { kind: "source", label: "Source code", href: "https://github.com/MaizNadeem/Zego-ChatApp" },
-        ],
-        Content: lazy(() => import("../projects/content/ZegoChat")),
     },
 ];
 
