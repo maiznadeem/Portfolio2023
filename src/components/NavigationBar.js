@@ -1,132 +1,101 @@
-import { useState, useEffect } from 'react';
-import { HashLink } from 'react-router-hash-link';
-import { BrowserRouter as Router } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import Navbar from "react-bootstrap/Navbar";
+import { Download } from "lucide-react";
 
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import logo from "../assets/img/Logo.png";
+import { SocialLinks } from "./social";
+import { downloadResume } from "../utils/resume";
 
-import logo from '../assets/img/Logo.png';
-import navIcon1 from '../assets/img/nav-icon1.svg';
-import navIcon2 from '../assets/img/nav-icon2.svg';
-import navIcon3 from '../assets/img/nav-icon3.svg';
-import navIcon4 from '../assets/img/nav-icon4.svg';
+const sections = [
+    { id: "home", label: "Home" },
+    { id: "skills", label: "Skills" },
+    { id: "projects", label: "Projects" },
+    { id: "aboutme", label: "About" },
+    { id: "connect", label: "Contact" },
+];
+
+// Highlights the section in view on the home page; project pages highlight Projects.
+const useActiveSection = (onHome) => {
+    const [active, setActive] = useState(onHome ? "home" : "projects");
+
+    useEffect(() => {
+        if (!onHome) {
+            setActive("projects");
+            return undefined;
+        }
+        const observer = new IntersectionObserver(
+            (entries) => entries.forEach((e) => e.isIntersecting && setActive(e.target.id)),
+            { rootMargin: "-45% 0px -50% 0px" }
+        );
+        sections.forEach(({ id }) => {
+            const el = document.getElementById(id);
+            if (el) observer.observe(el);
+        });
+        return () => observer.disconnect();
+    }, [onHome]);
+
+    return active;
+};
 
 const NavigationBar = () => {
-
-    const [activeLink, setActiveLink] = useState("home");
+    const { pathname } = useLocation();
+    const onHome = pathname === "/";
+    const active = useActiveSection(onHome);
     const [scrolled, setScrolled] = useState(false);
-    const [menuExpanded, setMenuExpanded] = useState(false);
-    const [isHamburgerMenuVisible, setIsHamburgerMenuVisible] = useState(false);
-  
-    const handleResize = () => {
-        const breakpoint = 991.98;
-        const isSmallScreen = window.innerWidth < breakpoint;
-        setIsHamburgerMenuVisible(isSmallScreen);
-    };
-  
+    const [expanded, setExpanded] = useState(false);
+
     useEffect(() => {
-        const onScroll = () => {
-            if (window.scrollY > 50)
-                setScrolled(true);
-            else
-                setScrolled(false);
-        };
-        handleResize();
-        window.addEventListener('resize', handleResize);
-        window.addEventListener("scroll", onScroll);
-
-        return () => {
-            window.removeEventListener("scroll", onScroll);
-            window.removeEventListener('resize', handleResize);
-        }
-
+        const onScroll = () => setScrolled(window.scrollY > 40);
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+        return () => window.removeEventListener("scroll", onScroll);
     }, []);
 
-    const handleLinkClick = (link) => {
-        setActiveLink(link);
-    };
-    
-    const handleExpanded = () => {
-        setMenuExpanded(prevMenuExpanded => !prevMenuExpanded);
-    };
-
-    const handleLogoClick = () => {
-        const links = document.querySelectorAll('.navbar-link');
-        links.forEach(link => link.classList.remove('active'));
-        handleExpanded()
-    }
+    const close = () => setExpanded(false);
 
     return (
-        <Router>
         <header>
-        <Navbar
-            expand="lg"
-            className={` ${scrolled ? "scrolled" : ""}${menuExpanded ? " expanded" : ""}`}
-            expanded={menuExpanded}
-            onClick={isHamburgerMenuVisible ? handleExpanded : null}
-        >
-        <Container>
-            <Navbar.Brand href="#home" className='logo'>
-                <img src={logo} alt='Logo' onClick={handleLogoClick}/>
-            </Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav">
-                <span className='navbar-toggler-icon' ></span>
-            </Navbar.Toggle>
-            <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="me-auto">
-                    <Nav.Link 
-                        href="#home"
-                        className={activeLink === 'home' ? 'active navbar-link' : 'navbar-link'}
-                        onClick={() => handleLinkClick('home')}
-                    >Home</Nav.Link>
-                    <Nav.Link
-                        href="#skills"
-                        className={activeLink === 'skills' ? 'active navbar-link' : 'navbar-link'}
-                        onClick={() => handleLinkClick('skills')}
-                    >Skills</Nav.Link>
-                    <Nav.Link 
-                        href="#projects"
-                        className={activeLink === 'projects' ? 'active navbar-link' : 'navbar-link'}
-                        onClick={() => handleLinkClick('projects')}
-                    >Projects</Nav.Link>
-                    <Nav.Link
-                        href="#aboutme"
-                        className={activeLink === 'aboutme' ? 'active navbar-link' : 'navbar-link'}
-                        onClick={() => handleLinkClick('aboutme')}
-                    >About Me</Nav.Link>
-                    <Nav.Link
-                        href="#footer"
-                        className={activeLink === 'footer' ? 'active navbar-link' : 'navbar-link'}
-                        onClick={() => handleLinkClick('footer')}
-                    >My Resume</Nav.Link>
-            </Nav>
-            <span className={`navbar-text ${menuExpanded ? "expanded" : ""}`}>
-                <div className='social-icon'>
-                    <a href='https://www.linkedin.com/in/m-maiz-nadeem-020949176' target="_blank" rel="noopener noreferrer" className='mr-2'>
-                        <img src={navIcon1} alt='Social' />
-                    </a>
-                    <a href='https://twitter.com/MaizNadeem' target="_blank" rel="noopener noreferrer" className='mr-2'>
-                        <img src={navIcon2} alt='Social' />
-                    </a>
-                    <a href='https://www.instagram.com/m.maiznadeem' target="_blank" rel="noopener noreferrer" className='mr-2'>
-                        <img src={navIcon3} alt='Social' />
-                    </a>
-                    <a href='https://github.com/MaizNadeem' target="_blank" rel="noopener noreferrer">
-                        <img src={navIcon4} alt='Social' />
-                    </a>
-                </div>
-                <HashLink to='#connect'>
-                    <button className="vvd"><span>Let's Connect</span></button>
-                </HashLink>
-            </span>
-            </Navbar.Collapse>
-        </Container>
-        </Navbar>
+            <Navbar
+                expand="lg"
+                variant="dark"
+                aria-label="Main"
+                expanded={expanded}
+                onToggle={setExpanded}
+                className={`site-nav${scrolled || expanded || !onHome ? " is-solid" : ""}`}
+            >
+                <Container>
+                    <Navbar.Brand as={Link} to="/" onClick={close} className="site-nav__brand">
+                        <img src={logo} alt="M. Maiz, home" />
+                    </Navbar.Brand>
+                    <Navbar.Toggle aria-controls="site-nav-menu" label="Menu" />
+                    <Navbar.Collapse id="site-nav-menu">
+                        <div className="site-nav__links">
+                            {sections.map(({ id, label }) => (
+                                <Link
+                                    key={id}
+                                    to={`/#${id}`}
+                                    onClick={close}
+                                    className={active === id ? "is-active" : undefined}
+                                    aria-current={active === id ? "true" : undefined}
+                                >
+                                    {label}
+                                </Link>
+                            ))}
+                        </div>
+                        <div className="site-nav__actions">
+                            <SocialLinks />
+                            <button type="button" className="btn-primary btn-sm" onClick={() => { downloadResume(); close(); }}>
+                                <Download size={16} aria-hidden="true" />
+                                Resume
+                            </button>
+                        </div>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
         </header>
-        </Router>
-    )
+    );
+};
 
-}
-
-export default NavigationBar
+export default NavigationBar;

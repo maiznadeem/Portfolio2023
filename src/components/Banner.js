@@ -1,80 +1,80 @@
-import { useState, useEffect } from "react";
-import { ArrowRightCircle } from 'react-bootstrap-icons';
-
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { ArrowDown, Download } from "lucide-react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 import headerImg from "../assets/img/header-img.svg";
 import { downloadResume } from "../utils/resume";
+import { EMAIL } from "./social";
 
-import 'animate.css';
+const roles = ["Software developer", "Video editor"];
 
-const Banner = () => {
-    
-    const [loopNum, setLoopNum] = useState(0)
-    const [isDeleting, setIsDeleting] = useState(false)
-    const [text, setText] = useState('')
-    const [delta, setDelta] = useState(300 - Math.random() * 100)
-    const toRotate = [ "Software Developer", "Video Editor" ]
-    const period = 500
+const prefersReducedMotion = () =>
+    typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    const tick = () => {
-        let i = loopNum % toRotate.length
-        let fullText = toRotate[i]
-        let updatedText = isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1)
-
-        setText(updatedText)
-
-        if (isDeleting && updatedText.length === fullText.length-1 ) {
-            setDelta(period)
-        }
-        else if (isDeleting && updatedText.length <= fullText.length-1 && updatedText.length > fullText.length-4 ) {
-            setDelta(prevDelta => prevDelta / 1.5)
-        } else if (isDeleting) {
-            setDelta(prevDelta => prevDelta / 1.2)
-        }
-        if (!isDeleting && updatedText === fullText) {
-            setIsDeleting(true)
-            setDelta(2000)
-        } else if (isDeleting && updatedText === '') {
-            setIsDeleting(false)
-            setLoopNum(loopNum + 1)
-            setDelta(100)
-        }
-    }
+// Types each role, holds it, deletes it, then moves to the next.
+const useTypedRole = () => {
+    const [index, setIndex] = useState(0);
+    const [text, setText] = useState(prefersReducedMotion() ? roles[0] : "");
+    const [deleting, setDeleting] = useState(false);
 
     useEffect(() => {
+        if (prefersReducedMotion()) return undefined;
+        const full = roles[index % roles.length];
+        let delay = deleting ? 45 : 95;
+        if (!deleting && text === full) delay = 2200;
+        if (deleting && text === "") delay = 350;
 
-        let ticker = setInterval(() => {
-            tick()
-        }, delta)
-        return () => { clearInterval(ticker) };
-    // eslint-disable-next-line
-    }, [text])
+        const timer = setTimeout(() => {
+            if (!deleting && text === full) setDeleting(true);
+            else if (deleting && text === "") {
+                setDeleting(false);
+                setIndex((i) => i + 1);
+            } else setText(full.slice(0, text.length + (deleting ? -1 : 1)));
+        }, delay);
+        return () => clearTimeout(timer);
+    }, [text, deleting, index]);
+
+    return text;
+};
+
+const Banner = () => {
+    const role = useTypedRole();
 
     return (
         <section className="banner" id="home">
-        <Container>
-            <Row className="aligh-items-center">
-            <Col xs={12} md={6} xl={7}>
-                <div className="animate__animated animate__fadeIn textalignmentbanner">
-                    <span className="tagline">Welcome to my Portfolio</span>
-                    <h1>{`Hi! I'm Maiz,`} <span className="txt-rotate"><span className="wrap">{text}</span></span></h1>
-                    <p>Dedicated to creating captivating digital experiences. With a blend of technical expertise and creative flair, I bring ideas to life through code and visual storytelling. As a lifelong learner, I'm always seeking new ways to push the boundaries of what's possible in the digital realm.</p>
-                    <button onClick={downloadResume}>Download Resume <ArrowRightCircle size={25} /></button>
-                    <p className="text-white mt-2 text-sm">Or, Email: <span className="text-[#aaa6a6]">contact.maiznadeem@gmail.com</span></p>
-                </div>
-            </Col>
-            <Col xs={12} md={6} xl={5}>
-                <div className="animate__animated animate__zoomIn">
-                    <img src={headerImg} alt="Header Img"/>
-                </div>
-            </Col>
-            </Row>
-        </Container>
+            <Container>
+                <Row className="align-items-center">
+                    <Col xs={12} md={7} xl={7}>
+                        <div className="banner__copy">
+                            <h1>
+                                Hi, I'm Maiz.
+                                <span className="banner__role" aria-hidden="true">{role}<span className="caret" /></span>
+                                <span className="visually-hidden">{roles.join(" and ")}</span>
+                            </h1>
+                            <p>I build web, mobile and desktop products end to end, from React front ends to Node.js and .NET back ends, and I've worked professionally as a video editor.</p>
+                            <div className="banner__actions">
+                                <button type="button" className="btn-primary" onClick={downloadResume}>
+                                    <Download size={18} aria-hidden="true" />
+                                    Download resume
+                                </button>
+                                <Link to="/#projects" className="btn-secondary">
+                                    See my projects
+                                    <ArrowDown size={18} aria-hidden="true" />
+                                </Link>
+                            </div>
+                            <p className="banner__email">Or email <a href={`mailto:${EMAIL}`}>{EMAIL}</a></p>
+                        </div>
+                    </Col>
+                    <Col xs={12} md={5} xl={5}>
+                        <img className="banner__art" src={headerImg} alt="" />
+                    </Col>
+                </Row>
+            </Container>
         </section>
-    )
-}
+    );
+};
 
-export default Banner
+export default Banner;

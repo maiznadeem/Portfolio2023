@@ -1,20 +1,5 @@
-import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
-import projImg1 from "../assets/projects/proj1.png";
-import projImg2 from "../assets/projects/proj2.png";
-import projImg3 from "../assets/projects/proj3.png";
-import projImg4 from "../assets/projects/proj4.png";
-import projImg5 from "../assets/projects/proj5.png";
-import projImg6 from "../assets/projects/proj6.png";
-import projImg7 from "../assets/projects/proj7.png";
-import projImg8 from "../assets/projects/proj8.png";
-import projBan1 from "../assets/banners/proj1.png";
-import projBan2 from "../assets/banners/proj2.png";
-import projBan3 from "../assets/banners/proj3.png";
-import projBan4 from "../assets/banners/proj4.png";
-import projBan5 from "../assets/banners/proj5.png";
-import projBan6 from "../assets/banners/proj6.png";
-import projBan7 from "../assets/banners/proj7.png";
-import projBan8 from "../assets/banners/proj8.png";
+import { Container, Tab, Nav } from "react-bootstrap";
+
 import thumb1 from "../assets/thumbnails/Thumbnail1.jpg";
 import thumb2 from "../assets/thumbnails/Thumbnail2.jpg";
 import thumb3 from "../assets/thumbnails/Thumbnail3.jpg";
@@ -22,209 +7,91 @@ import thumb4 from "../assets/thumbnails/Thumbnail4.jpg";
 import thumb5 from "../assets/thumbnails/Thumbnail5.jpg";
 import thumb6 from "../assets/thumbnails/Thumbnail6.jpg";
 import innovation2 from "../assets/img/innovation2.jpg";
-import colorSharp2 from "../assets/img/color-sharp2.png";
-import 'animate.css';
-import TrackVisibility from 'react-on-screen';
 
+import { projects } from "../data/projects";
 import { ProjectCard } from "./ProjectCard";
 import VideoCard from "./VideoCard";
 import WistiaVideo from "./WistiaVideo";
 
-const Projects = () => {
+const videos = [
+    {
+        title: "Despacito | A Scrap Edit",
+        description: "Built mostly in After Effects, with short rotoscoping, some 3D tracking and plugin effects: a showcase of gaming-style edits.",
+        imgUrl: thumb1,
+        url: "https://youtu.be/v3kiFn9BV-A",
+    },
+    {
+        title: "Lalo Salamanca - Better Call Saul",
+        description: "A Premiere Pro edit that turns Lalo Salamanca's arc in Better Call Saul into a short cinematic story.",
+        imgUrl: thumb2,
+        url: "https://www.instagram.com/reel/Cmgxzdio3x7/",
+    },
+    {
+        title: "Baloch Nationalism in Pakistan",
+        description: "From a year managing the social channels of novelist Tariq Ismail Sagar.",
+        imgUrl: thumb3,
+        url: "https://youtu.be/R2ZasDkPhCQ",
+    },
+    {
+        title: "1000+ Skills to Become a Freelancer",
+        description: "1000+ skills to become a millionaire using Semrush.com, for eCommercewala.",
+        imgUrl: thumb4,
+        url: "https://fb.watch/iJH64zDnej/",
+    },
+    {
+        title: "Future of Wars | Drone Soldiers",
+        description: "E-commerce in a future digital war of AI-based drone soldiers, for eCommercewala.",
+        imgUrl: thumb5,
+        url: "https://fb.watch/iJGWer-zLn/",
+    },
+    {
+        title: "One Curriculum Agenda",
+        description: "A podcast with Dr. Zaar on improving the education system.",
+        imgUrl: thumb6,
+        url: "https://fb.watch/iJGZdIJFfR/",
+    },
+];
 
-    const projects = [
-        {
-            id: 7,
-            title: "HelpHive - Hospitality Staffing",
-            description: "A marketplace where hotels book staff by the shift: web app, Android app and admin console on one Node.js API, with Stripe payments",
-            imgUrl: projImg7,
-            url: "https://github.com/Helphive",
-            banUrl: projBan7,
-        },
-        {
-            id: 8,
-            title: "Great Read - Non-Fiction Books",
-            description: "A non-fiction book discovery site with 2,100+ books, quotes, a reading-list builder and paid study notes through Stripe",
-            imgUrl: projImg8,
-            url: "https://github.com/maiznadeem/great-read",
-            banUrl: projBan8,
-        },
-        {
-            id: 1,
-            title: "Homyz - Real Estate Website",
-            description: "A comprehensive real estate website that simplifies property search and transactions",
-            imgUrl: projImg1,
-            url: "https://github.com/MaizNadeem/Real-Estate-Web",
-            banUrl: projBan1,
-        },
-        {
-            id: 2,
-            title: "Deliveroo - Food Delivery Clone",
-            description: "A Deliveroo-inspired food delivery clone, highlighting react native + firestore development",
-            imgUrl: projImg2,
-            url: "https://github.com/MaizNadeem/Deliveroo-2.0",
-            banUrl: projBan2,
-        },
-        {
-            id: 3,
-            title: "Lifestream - Blood Bank",
-            description: "A blood bank management desktop app, rebuilt on .NET 11 with a WPF client, an ASP.NET Core API and Azure SQL",
-            imgUrl: projImg3,
-            url: "https://github.com/maiznadeem/lifestream",
-            banUrl: projBan3,
-        },
-        {
-            id: 4,
-            title: "NFT Marketplace",
-            description: "An NFT Marketplace: A sleek UI design for a digital platform in trading unique digital assets",
-            imgUrl: projImg4,
-            url: "https://github.com/MaizNadeem/NFT-Marketplace",
-            banUrl: projBan4,
-        },
-        {
-            id: 5,
-            title: "Pig Game",
-            description: "A fun and interactive multiplayer dice game",
-            imgUrl: projImg5,
-            url: "https://github.com/MaizNadeem/Pig-Game",
-            banUrl: projBan5,
-        },
-        {
-            id: 6,
-            title: "ZEGO Cloud: Chat App",
-            description: "A feature-rich chat application powered by cloud technology for seamless real-time communication",
-            imgUrl: projImg6,
-            url: "https://github.com/MaizNadeem/Zego-ChatApp",
-            banUrl: projBan6,
-        },
-    ];
-
-    const videos = [
-        {
-            id: 1,
-            title: "Despacito | A Scrap Edit",
-            description: "Relied heavily on Adobe After Effects. This Video Includes Short Rotoscoping, Some of 3D Tracking and many plugins for immersive visual effects. A great way to portray gaming edits.",
-            imgUrl: thumb1,
-            url: "https://youtu.be/v3kiFn9BV-A",
-        },
-        {
-            id: 2,
-            title: "Lalo Salamanca - Better Call Saul",
-            description: "In a masterful edit within Premiere Pro, I transformed Lalo Salamanca's character in Better Call Saul into a captivating cinematic narrative, skillfully weaving his story with visual finesse.",
-            imgUrl: thumb2,
-            url: "https://www.instagram.com/reel/Cmgxzdio3x7/?utm_source=ig_web_copy_link&igshid=MzRlODBiNWFlZA==",
-        },
-        {
-            id: 3,
-            title: "Baloch Nationalism in Pakistan",
-            description: "Year-long relationship, in managing the social channels for the esteemed novelist Tariq Ismail Sagar, reflects a significant contribution to his online presence.",
-            imgUrl: thumb3,
-            url: "https://youtu.be/R2ZasDkPhCQ",
-        },
-        {
-            id: 4,
-            title: "1000+ Skills to become Freelancer",
-            description: "1000+ Skills to become Millionaire using Semrush.com | eCommercewala",
-            imgUrl: thumb4,
-            url: "https://fb.watch/iJH64zDnej/?mibextid=NnVzG8",
-        },
-        {
-            id: 5,
-            title: "Future of Wars | Drone Soldiers",
-            description: "Ecommerce in Future Digital War using AI-Based Drone Soldiers | eCommercewala",
-            imgUrl: thumb5,
-            url: "https://fb.watch/iJGWer-zLn/?mibextid=NnVzG8",
-        },
-        {
-            id: 6,
-            title: "One Cirriculum Agenda",
-            description: "Lets meet Dr. Zaar in this Podcast: talking about making improvements in our typical system",
-            imgUrl: thumb6,
-            url: "https://fb.watch/iJGZdIJFfR/?mibextid=NnVzG8",
-        },
-    ]
-
-    return (
-        <section className="project" id="projects">
+const Projects = () => (
+    <section className="section project" id="projects">
         <Container>
-            <Row>
-            <Col size={12}>
-                <TrackVisibility>
-                {({ isVisible }) =>
-                <div className={isVisible ? "animate__animated animate__fadeIn": ""}>
-                    <h2>Projects</h2>
-                    <p>I've designed and developed this personal portfolio website to showcase my skills and projects. Implemented responsive design, integrated interactive elements, and optimized site performance to create an engaging user experience.</p>
-                    <Tab.Container id="projects-tabs" defaultActiveKey="first">
-                    <Nav variant="pills" className="nav-pills mb-5" id="pills-tab">
-                        <Nav.Item>
-                            <Nav.Link eventKey="first">Dev Projects</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link eventKey="second">Video Editing</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link eventKey="third">Future Goals</Nav.Link>
-                        </Nav.Item>
-                    </Nav>
-                    <Tab.Content id="slideInUp" className={isVisible ? "animate__animated animate__slideInUp" : ""}>
-                        <Tab.Pane eventKey="first">
-                        <Row>
-                        <div className="card-container">
-                            {
-                                projects.map((project) => {
-                                    return (
-                                        <ProjectCard
-                                            key={project.id}
-                                            {...project}
-                                        />
-                                    )
-                                })   
-                            }
+            <header className="section__header">
+                <h2>Projects</h2>
+                <p>Products I've built end to end, from marketplaces with real payments to mobile and desktop apps. Open one for screenshots, the stack and how it fits together.</p>
+            </header>
+            <Tab.Container id="projects-tabs" defaultActiveKey="software" mountOnEnter>
+                <Nav className="segmented" role="tablist">
+                    <Nav.Item><Nav.Link eventKey="software">Software</Nav.Link></Nav.Item>
+                    <Nav.Item><Nav.Link eventKey="video">Video editing</Nav.Link></Nav.Item>
+                    <Nav.Item><Nav.Link eventKey="next">What's next</Nav.Link></Nav.Item>
+                </Nav>
+                <Tab.Content>
+                    <Tab.Pane eventKey="software">
+                        <div className="card-grid">
+                            {projects.map((p) => <ProjectCard key={p.slug} {...p} />)}
                         </div>
-                        </Row>
-                        </Tab.Pane>
-                        <Tab.Pane eventKey="second">
-                            <div className="wistia-video">
-                                <WistiaVideo />
+                    </Tab.Pane>
+                    <Tab.Pane eventKey="video">
+                        <div className="video-feature">
+                            <WistiaVideo />
+                        </div>
+                        <div className="card-grid">
+                            {videos.map((v) => <VideoCard key={v.url} {...v} />)}
+                        </div>
+                    </Tab.Pane>
+                    <Tab.Pane eventKey="next">
+                        <div className="future">
+                            <img src={innovation2} alt="" loading="lazy" />
+                            <div>
+                                <h3>Where I'm headed</h3>
+                                <p>As I continue as a software developer and video editor, I want to lead projects that join solid engineering with good storytelling. I'm sharpening both the code and the visual side so I can build digital experiences that people enjoy using, and I'm always keen to learn from and work with people building ambitious things.</p>
                             </div>
-                        <Row>
-                        <div className="card-container">
-                            {
-                                videos.map((video) => {
-                                    return (
-                                        <VideoCard
-                                            key={video.id}
-                                            {...video}
-                                        />
-                                    )
-                                })
-                            }
                         </div>
-                        </Row>
-                        </Tab.Pane>
-                        <Tab.Pane eventKey="third">
-                        <Row>
-                            <Col>
-                                <div className="innovation-container">
-                                    <img src={innovation2} className="innovation-img" alt="Innovation Icon" />
-                                    <div className="future">
-                                        <h1>Future Aspirations</h1>
-                                        <p>As I continue on my journey as a Software Developer and Video Editor, my ambitions are fueled by a desire to push the boundaries of digital creativity. I aim to lead innovative projects that seamlessly integrate cutting-edge technology and captivating storytelling. By honing my skills in both coding and visual aesthetics, I aspire to create immersive digital experiences that resonate with audiences on a profound level. Through ongoing learning and collaboration, I seek to contribute to groundbreaking projects that leave a lasting impact in the realm of technology-driven artistry.</p>
-                                    </div>
-                                </div>
-                            </Col>
-                        </Row>
-                        </Tab.Pane>
-                    </Tab.Content>
-                    </Tab.Container>
-                </div>}
-                </TrackVisibility>
-            </Col>
-            </Row>
+                    </Tab.Pane>
+                </Tab.Content>
+            </Tab.Container>
         </Container>
-        <img className="background-image-right" src={colorSharp2} alt="color-sharp-bg" ></img>
-        </section>
-  )
-}
+    </section>
+);
 
-export default Projects
+export default Projects;

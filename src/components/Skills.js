@@ -1,122 +1,90 @@
-import colorSharp from "../assets/img/color-sharp.png"
-import web from '../assets/skills/web.png'
-import net from '../assets/skills/net.png'
-import reactNative from '../assets/skills/react-native.png'
-import photoshop from '../assets/skills/photoshop.png'
-import premierePro from '../assets/skills/premiere-pro.png'
+import { Clapperboard, Globe, Monitor, Palette, Smartphone } from "lucide-react";
+import Container from "react-bootstrap/Container";
 
-import node from "../assets/icons/node.png"
-import react from "../assets/icons/react.png"
-import redux from "../assets/icons/redux.png"
-import tailwind from "../assets/icons/tailwind.png"
-import mongo from "../assets/icons/mongo.png"
-import bootstrap from "../assets/icons/bootstrap.png"
-import micnet from "../assets/icons/net.png"
-import sqlserver from "../assets/icons/sqlserver.png"
-import express from "../assets/icons/express.png"
-import graphql from "../assets/icons/graphql.png"
-import gcp from "../assets/icons/gcp.png"
-import azure from "../assets/icons/azure.png"
-import firebase from "../assets/icons/firebase.png"
-import vs from "../assets/icons/vs.png"
-import vscode from "../assets/icons/vscode.png"
-import javascript from "../assets/icons/javascript.png"
-import csharp from "../assets/icons/csharp.png"
-import c from "../assets/icons/c.png"
-import cpp from "../assets/icons/cpp.png"
-import java from "../assets/icons/java.png"
-import pr from "../assets/icons/pr.png"
-import ps from "../assets/icons/ps.png"
-import ae from "../assets/icons/ae.png"
-import canva from "../assets/icons/canva.png"
+import javascript from "../assets/tech/javascript.svg";
+import typescript from "../assets/tech/typescript.svg";
+import csharp from "../assets/tech/csharp.svg";
+import cplusplus from "../assets/tech/cplusplus.svg";
+import c from "../assets/tech/c.svg";
+import java from "../assets/tech/java.svg";
+import react from "../assets/tech/react.svg";
+import redux from "../assets/tech/redux.svg";
+import tailwindcss from "../assets/tech/tailwindcss.svg";
+import bootstrap from "../assets/tech/bootstrap.svg";
+import nodejs from "../assets/tech/nodejs.svg";
+import express from "../assets/tech/express.svg";
+import dotnet from "../assets/tech/dotnet.svg";
+import graphql from "../assets/tech/graphql.svg";
+import mongodb from "../assets/tech/mongodb.svg";
+import sqlserver from "../assets/tech/sqlserver.svg";
+import firebase from "../assets/tech/firebase.svg";
+import azure from "../assets/tech/azure.svg";
+import googlecloud from "../assets/tech/googlecloud.svg";
+import docker from "../assets/tech/docker.svg";
+import visualstudio from "../assets/tech/visualstudio.svg";
+import vscode from "../assets/tech/vscode.svg";
+import premierepro from "../assets/tech/premierepro.svg";
+import aftereffects from "../assets/tech/aftereffects.svg";
+import photoshop from "../assets/tech/photoshop.svg";
+import canva from "../assets/tech/canva.svg";
 
-import Carousel from 'react-multi-carousel';
+const areas = [
+    { Icon: Globe, title: "Web development", text: "React front ends and Node.js APIs, deployed on Vercel and Google Cloud." },
+    { Icon: Smartphone, title: "Mobile apps", text: "React Native and Expo apps for Android, with maps, payments and push notifications." },
+    { Icon: Monitor, title: "Desktop and .NET", text: "WPF desktop apps backed by ASP.NET Core APIs and Azure SQL." },
+    { Icon: Clapperboard, title: "Video editing", text: "Premiere Pro and After Effects edits, from short social clips to long-form channels." },
+    { Icon: Palette, title: "Graphic design", text: "Thumbnails, social graphics and interface mockups in Photoshop and Canva." },
+];
 
-import ProgressBar from "./ProgressBar";
+// invert: logos drawn in black, which would vanish on the dark background.
+const toolkit = [
+    { group: "Languages", items: [["JavaScript", javascript], ["TypeScript", typescript], ["C#", csharp], ["C++", cplusplus], ["C", c], ["Java", java]] },
+    { group: "Front end and mobile", items: [["React", react], ["React Native", react], ["Redux", redux], ["Tailwind CSS", tailwindcss], ["Bootstrap", bootstrap]] },
+    { group: "Back end and data", items: [["Node.js", nodejs], ["Express", express, true], [".NET", dotnet], ["GraphQL", graphql], ["MongoDB", mongodb], ["SQL Server", sqlserver], ["Firebase", firebase]] },
+    { group: "Cloud and tools", items: [["Azure", azure], ["Google Cloud", googlecloud], ["Docker", docker], ["Visual Studio", visualstudio], ["VS Code", vscode]] },
+    { group: "Creative", items: [["Premiere Pro", premierepro], ["After Effects", aftereffects], ["Photoshop", photoshop], ["Canva", canva]] },
+];
 
-import 'react-multi-carousel/lib/styles.css';
+const Skills = () => (
+    <section className="section skill" id="skills">
+        <Container>
+            <header className="section__header">
+                <h2>Skills</h2>
+                <p>I work across the stack and across media: the same person who builds the API can cut the launch video.</p>
+            </header>
 
-const Skills = () => {
+            <ul className="skill-areas">
+                {areas.map(({ Icon, title, text }) => (
+                    <li key={title} className="skill-area">
+                        <span className="skill-area__icon"><Icon size={22} aria-hidden="true" /></span>
+                        <h3>{title}</h3>
+                        <p>{text}</p>
+                    </li>
+                ))}
+            </ul>
 
-    const responsive = {
-        superLargeDesktop: {
-            breakpoint: { max: 4000, min: 3000 },
-            items: 5
-        },
-        desktop: {
-            breakpoint: { max: 3000, min: 1024 },
-            items: 4
-        },
-        tablet: {
-            breakpoint: { max: 1024, min: 464 },
-            items: 2
-        },
-        mobile: {
-            breakpoint: { max: 464, min: 0 },
-            items: 1
-        }
-    };
-
-    const imagesArray = [ node, react, redux, tailwind, mongo, bootstrap, micnet, sqlserver, express, graphql, gcp, azure, firebase, vs, vscode, javascript, csharp, c, cpp, java, pr, ps, ae, canva ]
-
-    return (
-        <section className="skill" id="skills">
-            <div className="container">
-                <div className="row">
-                    <div className="col-12">
-                        <div className="skill-bx wow zoomIn">
-                            <h2>Skills</h2>
-                            <p>I have learnt many aspects of Development including Routing, APIs and caching. My video editing skills help me to create stunning designs as I like making better designs.</p>
-                            <div className="gd-carousel-wrapper">
-                            <Carousel 
-                                swipeable={true}
-                                draggable={true}
-                                arrows={true}
-                                responsive={responsive}
-                                infinite={false}
-                                className="gd-carousel">
-                                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', gap: '1rem' }} >
-                                    <ProgressBar percentage={80} image={web} color='##3583DD' />
-                                    <h5>Web Development</h5>
-                                </div>
-                                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', gap: '1rem' }} >
-                                    <ProgressBar percentage={85} image={reactNative} color='#61DAFA' />
-                                    <h5>React Native</h5>
-                                </div>
-                                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', gap: '1rem' }} >
-                                    <ProgressBar percentage={75} image={net} color='#512BD4' />
-                                    <h5>.NET Framework</h5>
-                                </div>
-                                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', gap: '1rem' }} >
-                                    <ProgressBar percentage={90} image={premierePro} color='#00004A' />
-                                    <h5>Video Editing</h5>
-                                </div>
-                                <div className="item">
-                                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', gap: '1rem' }} >
-                                    <ProgressBar percentage={80} image={photoshop} color='#001834' />
-                                    <h5>Graphic Designing</h5>
-                                    </div>
-                                </div>
-                            </Carousel>
-                            </div>
- 
+            <div className="toolkit">
+                <h3 className="toolkit__title">Toolkit</h3>
+                <dl className="toolkit__groups">
+                    {toolkit.map(({ group, items }) => (
+                        <div key={group} className="toolkit__group">
+                            <dt>{group}</dt>
+                            <dd>
+                                <ul className="tool-list">
+                                    {items.map(([name, logo, invert]) => (
+                                        <li key={name} className="tool">
+                                            <img src={logo} alt="" className={invert ? "is-inverted" : undefined} />
+                                            {name}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </dd>
                         </div>
-                        <div className="skills-icon-wrap">
-                            <h5>Versatile Toolkit: Technologies, and Languages I've Engaged With</h5>
-                            <div className="image-gallery">
-                                {imagesArray.map((image, index) => (
-                                    <div className="image-item" key={index}>
-                                        <img src={image} alt={`Icon ${index}`} />
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    ))}
+                </dl>
             </div>
-            <img className="background-image-left" src={colorSharp} alt="Skills-Background" />
-        </section>
-    )
-}
+        </Container>
+    </section>
+);
 
-export default Skills
+export default Skills;
