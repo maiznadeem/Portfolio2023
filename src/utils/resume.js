@@ -1,4 +1,4 @@
-// The resume is a static file in client/public.
+// The resume is a static file in public/.
 export const downloadResume = () => {
     const link = document.createElement("a");
     link.href = `${process.env.PUBLIC_URL}/resume.pdf`;
