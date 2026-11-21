@@ -1,31 +1,58 @@
 import React from 'react';
 
+import homeLight from '../../assets/screens/nft/home-light.webp';
+import detailsLight from '../../assets/screens/nft/details-light.webp';
+import homeDark from '../../assets/screens/nft/home-dark.webp';
+import detailsDark from '../../assets/screens/nft/details-dark.webp';
+
+const RELEASES = "https://github.com/maiznadeem/NFTMarketplace/releases/latest";
+
 const NftMarketplace = () => (
     <>
-        <p>This repository contains the source code for a modern NFT Marketplace app built using React Native. The app allows users to explore and trade various digital assets as non-fungible tokens (NFTs).</p>
+        <h2>About</h2>
+        <p>
+            NFT Marketplace is a native Android app for browsing curated digital art. You can search the collection, open any piece to see its artwork, creator, price, description and full bid history, and switch between handcrafted light and dark themes.
+        </p>
 
         <h2>Features</h2>
         <ul>
-            <li>Browse and discover a wide range of NFTs from different artists and creators.</li>
-            <li>Buy and sell NFTs securely using integrated cryptocurrency payments.</li>
-            <li>Create and mint your own NFTs to showcase your digital creations.</li>
-            <li>Connect with a vibrant community of artists, collectors, and enthusiasts.</li>
+            <li><strong>Live collection:</strong> NFTs stream from the Firebase Realtime Database and update instantly.</li>
+            <li><strong>Instant search:</strong> filter the collection by name as you type.</li>
+            <li><strong>Rich details:</strong> artwork, creator, price, description and every bid for each piece.</li>
+            <li><strong>Light and dark themes:</strong> follows the system by default, with a one-tap toggle that's remembered.</li>
+            <li><strong>Native feel:</strong> edge-to-edge layout, an adaptive themed app icon and a branded splash screen.</li>
         </ul>
 
         <h2>Screenshots</h2>
-        <div className="shot-grid phones">
-            <img src="https://raw.githubusercontent.com/MaizNadeem/NFT-Marketplace/main/images/Image%201.jpg" alt="Home Page" />
-            <img src="https://raw.githubusercontent.com/MaizNadeem/NFT-Marketplace/main/images/Image%202.jpg" alt="Details Page" loading="lazy" />
+        <div className="shot-grid phones framed">
+            <img src={homeLight} alt="Home, light theme" />
+            <img src={detailsLight} alt="Details, light theme" loading="lazy" />
+            <img src={homeDark} alt="Home, dark theme" loading="lazy" />
+            <img src={detailsDark} alt="Details, dark theme" loading="lazy" />
         </div>
 
-        <h2>Download</h2>
-        <p>You can download the Android build of the app from here: <a href="https://github.com/MaizNadeem/NFT-Marketplace.git" target="_blank" rel="noopener noreferrer">NFT Marketplace App (apk)</a></p>
-
-        <h2>Technologies Used</h2>
+        <h2>Locked-Down Backend</h2>
+        <p>The backend serves this app and nothing else:</p>
         <ul>
-            <li>React Native Expo</li>
-            <li>Firebase Realtime Database</li>
-            <li>React Navigation</li>
+            <li><strong>App Check with Play Integrity:</strong> every database request must prove it comes from the genuine, signed app on a genuine device. Anything else gets refused.</li>
+            <li><strong>Database rules:</strong> only the NFT collection can be read, and all writes are denied.</li>
+            <li><strong>Restricted API key:</strong> it only works for this app's package and release certificate.</li>
+            <li><strong>No public files:</strong> the artwork lives in the database itself, so the same checks protect it.</li>
+        </ul>
+
+        <h2>Install</h2>
+        <ol>
+            <li>Open the <a href={RELEASES} target="_blank" rel="noopener noreferrer">latest release</a> on your Android phone (Android 7.0 or later) and download the APK.</li>
+            <li>Open it and allow your browser to install apps when Android asks.</li>
+            <li>Updates install over the previous version. Each APK ships with a SHA-256 checksum.</li>
+        </ol>
+        <p>Rooted phones, custom ROMs and emulators can't pass the device check, so they can't load the collection.</p>
+
+        <h2>Tech Stack</h2>
+        <ul>
+            <li><strong>App:</strong> React Native 0.88 and Expo SDK 58 with React 19 and React Navigation 7.</li>
+            <li><strong>Backend:</strong> React Native Firebase with the Realtime Database and App Check.</li>
+            <li><strong>Builds:</strong> signed release APKs built locally with Gradle, published on GitHub Releases.</li>
         </ul>
     </>
 );

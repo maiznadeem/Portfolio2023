@@ -689,6 +689,8 @@ ul, ol { margin: 0; padding: 0; }
 }
 .prose .shot-grid.phones { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
 .prose .shot-grid.phones img { border-radius: 18px; }
+/* Screenshots that already come in a phone frame. */
+.prose .shot-grid.framed img { border: 0; border-radius: 0; }
 .prose__loading { color: var(--muted); }
 
 .next-project { margin-top: 80px; border-top: 1px solid var(--border); padding-top: 32px; }

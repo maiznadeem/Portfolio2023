@@ -1,25 +1,53 @@
 import React from 'react';
 
+import home from '../../assets/screens/homyz/home.webp';
+import properties from '../../assets/screens/homyz/properties.webp';
+import property from '../../assets/screens/homyz/property.webp';
+import mobileProperties from '../../assets/screens/homyz/m-properties.webp';
+import mobileProperty from '../../assets/screens/homyz/m-property.webp';
+
 const Homyz = () => (
     <>
-        <p>Introducing Homyz - the ultimate real estate platform! Buy or sell properties hassle-free with its user-friendly interface. List your property effortlessly, and explore countless options with a dynamic interactive map. Like your favourite residencies and secure your account with Auth0. Sleek UI powered by Mantine for a seamless experience. Get ready for the real estate adventure of a lifetime!</p>
+        <h2>About</h2>
+        <p>
+            Homyz is a real estate website where people browse homes for sale, save the ones they like and book a visit. Anyone can search the listings by title, city or country and see each home on a map. Signed-in users can list their own property with photos, keep a favourites list and manage their bookings.
+        </p>
 
-        <h2>Key Features</h2>
+        <h2>Features</h2>
         <ul>
-            <li><strong>Discover Dream Properties</strong>: Uncover your perfect home with Homyz's powerful property search. Explore any location and its surroundings on an interactive map.</li>
-            <li><strong>Love It, Save It</strong>: Fall in love with properties? Simply hit the heart button to save them to your personalized favourites list for future delight.</li>
-            <li><strong>Fortress of Security</strong>: Your data is guarded by Auth0, ensuring a rock-solid and seamless user authentication experience.</li>
-            <li><strong>Unlock Exclusive Features</strong>: Create an account, log in, and open the door to exclusive features, saving preferences, and personalized experiences.</li>
+            <li><strong>Search and browse:</strong> every listing with its price, rooms and location, searchable by title, city or country.</li>
+            <li><strong>Map view:</strong> each property is pinned on an interactive Leaflet map, and new listings are placed by geocoding their address.</li>
+            <li><strong>Favourites and visits:</strong> save homes with the heart button and book a visit for a date within the next year.</li>
+            <li><strong>List a property:</strong> a guided form for the details, address and photos, which upload straight to Cloudinary.</li>
+            <li><strong>Sign-in:</strong> Auth0 with email and password or Google, linked into one account per person.</li>
         </ul>
 
-        <h2>Technologies</h2>
+        <h2>Built to Be Safe in Public</h2>
         <ul>
-            <li><strong>React</strong>: Empowering UI Magic. A dynamic JavaScript library for creating captivating user interfaces with ease.</li>
-            <li><strong>Node.js</strong>: Unleashing Server-Side Potential. A powerful runtime environment enabling lightning-fast back-end development.</li>
-            <li><strong>Express</strong>: Streamlined Web Applications. An agile Node.js framework simplifying server-side coding for web applications.</li>
-            <li><strong>MongoDB</strong>: Rock-Solid Data Storage. A cutting-edge NoSQL database ensuring secure and reliable data storage.</li>
-            <li><strong>Auth0</strong>: Fortified Authentication. A top-tier third-party service providing robust user authentication for enhanced security.</li>
-            <li><strong>Mantine</strong>: Beauty in UI Components. A treasure trove of React components for crafting polished and stunning user interfaces.</li>
+            <li>The API decides whose favourites and bookings to change from the verified email in the Auth0 token, never from the request.</li>
+            <li>Photo uploads are signed by the server for one logged-in user, one image and one folder, and only accept jpg, png and webp.</li>
+            <li>Rate limits and per-account caps on listings, favourites, bookings and uploads, shared across serverless instances through MongoDB.</li>
+            <li>Security headers with Helmet, a production-only CORS list and Auth0 application, and owners' email addresses kept out of public reads.</li>
+        </ul>
+
+        <h2>Screenshots</h2>
+        <figure className="shot">
+            <img src={home} alt="Homyz home page with search and listing stats" />
+        </figure>
+        <div className="shot-grid">
+            <img src={properties} alt="All properties with search" loading="lazy" />
+            <img src={property} alt="Property details with its location on a map" loading="lazy" />
+        </div>
+        <div className="shot-grid phones">
+            <img src={mobileProperties} alt="Properties on a phone" loading="lazy" />
+            <img src={mobileProperty} alt="Property details on a phone" loading="lazy" />
+        </div>
+
+        <h2>Tech Stack</h2>
+        <ul>
+            <li><strong>Front end:</strong> React with Vite, React Router 7, Mantine, React Query, Leaflet and Swiper.</li>
+            <li><strong>Back end:</strong> Node.js and Express on Vercel serverless functions, with Prisma on MongoDB Atlas.</li>
+            <li><strong>Services:</strong> Auth0 for sign-in, Cloudinary for photo uploads and delivery, and a daily Vercel cron that keeps the free Atlas cluster awake.</li>
         </ul>
     </>
 );
