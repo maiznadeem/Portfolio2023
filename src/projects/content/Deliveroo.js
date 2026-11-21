@@ -1,66 +1,65 @@
 import React from 'react';
 
+import start from '../../assets/screens/deliveroo/start.webp';
+import loginDark from '../../assets/screens/deliveroo/login-dark.webp';
+import dashboard from '../../assets/screens/deliveroo/dashboard.webp';
+import dashboardDark from '../../assets/screens/deliveroo/dashboard-dark.webp';
+import restaurant from '../../assets/screens/deliveroo/restaurant.webp';
+import basketDark from '../../assets/screens/deliveroo/basket-dark.webp';
+import delivery from '../../assets/screens/deliveroo/delivery.webp';
+import profileDark from '../../assets/screens/deliveroo/profile-dark.webp';
+
+const RELEASES = "https://github.com/MaizNadeem/Deliveroo-2.0/releases/latest";
+
 const Deliveroo = () => (
     <>
-        <p>Deliveroo Clone with React Native Expo (React Navigation, Redux, Tailwind CSS & Firebase)</p>
+        <h2>About</h2>
+        <p>
+            A Deliveroo-inspired food delivery app for Android. You browse categories and featured restaurants, open a menu, fill a basket and place an order, then follow the rider on a live map. Version 2.0 rebuilds the original 2023 project on current tooling, with a redesigned look in light and dark mode.
+        </p>
 
-        <h2>Installation</h2>
-        <p>To install the Deliveroo app on your Android device, follow these steps:</p>
-        <ol>
-            <li>Download the APK file from the following link: <a href="https://drive.google.com/file/d/1yGeEmzMSG1cvEjTx2Am3kkB4xIG3apDv/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Download APK</a></li>
-            <li>Once the APK is downloaded, open it on your Android device.</li>
-            <li>If prompted, allow the installation of apps from unknown sources in your device settings.</li>
-            <li>Follow the on-screen instructions to install the app.</li>
-            <li>Once the installation is complete, you can open the app and start using the Deliveroo Clone with React Native!</li>
-        </ol>
-        <p>Please note that this installation method is for Android devices only.</p>
+        <h2>Try It</h2>
+        <p>
+            Download the APK from the <a href={RELEASES} target="_blank" rel="noopener noreferrer">latest release</a> (Android 7.0 or later, on an ARM phone). Tap <strong>Try the demo</strong> to look around without an account, or create one with your email.
+        </p>
 
-        <h2>About the Project</h2>
-        <p>The "Deliveroo" app is a React Native Expo application for food delivery. It utilizes a variety of technologies to create a comprehensive solution. Here's an overview of the project:</p>
-
-        <h3>Project Description</h3>
-        <p>The "Deliveroo" app aims to provide a seamless food delivery experience to users. It offers a range of screens to facilitate different functionalities, including:</p>
+        <h2>Features</h2>
         <ul>
-            <li><strong>Splash Screen:</strong> Initial screen with branding and loading indicators.</li>
-            <li><strong>Login and Signup Screens:</strong> Enable users to create accounts or authenticate for personalized features.</li>
-            <li><strong>Dashboard Screen:</strong> Main screen to browse, search restaurants, explore menus, and place orders.</li>
-            <li><strong>Basket Screen:</strong> Display items in the user's basket for order review and modification.</li>
-            <li><strong>Profile Screen:</strong> Manage personal info, view order history, and customize preferences.</li>
-            <li><strong>Restaurant Screen:</strong> Detailed info about a specific restaurant, including menu, reviews, and location.</li>
-            <li><strong>Delivery Screen:</strong> Track the status and progress of ongoing food delivery, including estimated arrival time.</li>
+            <li><strong>Browse:</strong> categories, featured restaurants and nearby offers, with search.</li>
+            <li><strong>Order:</strong> restaurant menus, a basket you can edit, and an order summary with fees.</li>
+            <li><strong>Live delivery map:</strong> the restaurant, your location and a route line that follows real roads.</li>
+            <li><strong>Accounts:</strong> email sign-up and sign-in with password reset, plus a one-tap demo that needs no account.</li>
+            <li><strong>Light and dark mode:</strong> follows the system until you tap the toggle, and remembers your choice.</li>
+            <li><strong>Fast start:</strong> the dashboard shows content about twice as fast on a cold start, and images are cached on the phone.</li>
         </ul>
 
         <h2>Screenshots</h2>
         <div className="shot-grid phones">
-            <img src="https://raw.githubusercontent.com/MaizNadeem/Deliveroo-2.0/main/Screenshots/4.jpg" alt="Deliveroo screenshot 1" />
-            <img src="https://raw.githubusercontent.com/MaizNadeem/Deliveroo-2.0/main/Screenshots/5.jpg" alt="Deliveroo screenshot 2" loading="lazy" />
-            <img src="https://raw.githubusercontent.com/MaizNadeem/Deliveroo-2.0/main/Screenshots/6.jpg" alt="Deliveroo screenshot 3" loading="lazy" />
-            <img src="https://raw.githubusercontent.com/MaizNadeem/Deliveroo-2.0/main/Screenshots/7.jpg" alt="Deliveroo screenshot 4" loading="lazy" />
+            <img src={start} alt="Start screen" />
+            <img src={loginDark} alt="Log in, dark mode" loading="lazy" />
+            <img src={dashboard} alt="Dashboard" loading="lazy" />
+            <img src={dashboardDark} alt="Dashboard, dark mode" loading="lazy" />
+            <img src={restaurant} alt="Restaurant menu with a dish in the basket" loading="lazy" />
+            <img src={basketDark} alt="Basket, dark mode" loading="lazy" />
+            <img src={delivery} alt="Live delivery map" loading="lazy" />
+            <img src={profileDark} alt="Profile, dark mode" loading="lazy" />
         </div>
 
-        <h2>Technologies</h2>
-
-        <h3>Front-end</h3>
+        <h2>Secure by Default</h2>
         <ul>
-            <li><strong>React Native:</strong> A popular JavaScript framework for building native mobile applications.</li>
-            <li><strong>Redux:</strong> A state management library that helps manage the app's global state and facilitates data flow between components.</li>
-            <li><strong>React Navigation:</strong> A routing and navigation library for React Native that allows seamless navigation between different screens.</li>
-            <li><strong>Tailwind CSS:</strong> A utility-first CSS framework used for styling the app's user interface.</li>
+            <li>Firestore data and Storage images are served only to signed-in users, and the app never writes to them.</li>
+            <li>Firebase App Check with Play Integrity means only genuine installs of the app get through.</li>
+            <li>Images have no public download links. The app fetches them with the user's sign-in and App Check tokens.</li>
+            <li>Every Google key is restricted to the app's package and signing certificate, and usage is capped to stay at no cost.</li>
         </ul>
 
-        <h3>API</h3>
+        <h2>Tech Stack</h2>
         <ul>
-            <li><strong>Google Maps (Cloud API):</strong> An API provided by Google Maps that enables integration with maps and location-based services.</li>
-        </ul>
-
-        <h3>Back-end (Firebase)</h3>
-        <ul>
-            <li><strong>Firestore:</strong> A NoSQL database provided by Firebase for storing and syncing data in real-time.</li>
-            <li><strong>Firebase Authentication:</strong> Firebase service for user authentication, enabling users to sign up and log in securely.</li>
-            <li><strong>Storage Bucket:</strong> Firebase's storage service for storing and serving user-generated content like images and videos.</li>
-            <li><strong>Cloud Functions:</strong> Serverless functions that run in response to events in Firebase, allowing custom server-side logic.</li>
-            <li><strong>GraphQL:</strong> A query language and runtime that enables efficient communication between the client and server, reducing unnecessary data transfers and improving performance.</li>
-            <li><strong>Node JS:</strong> A server-side JavaScript runtime that powers the backend server of the app, handling authentication, data retrieval, and server-side operations.</li>
+            <li><strong>App:</strong> React Native 0.88 and Expo SDK 58 on the New Architecture, React Navigation 7, Redux Toolkit and NativeWind 4.</li>
+            <li><strong>Media:</strong> expo-image for cached images and expo-video for the order animation.</li>
+            <li><strong>Firebase:</strong> React Native Firebase with Authentication, Firestore, Cloud Storage and App Check.</li>
+            <li><strong>Maps:</strong> the Maps SDK for Android and the Routes API.</li>
+            <li><strong>Releases:</strong> signed APKs for ARM phones, published on GitHub Releases with a SHA-256 checksum.</li>
         </ul>
     </>
 );
