@@ -85,6 +85,18 @@ ul, ol { margin: 0; padding: 0; }
 .skip-link:focus { top: 12px; color: var(--bg); }
 
 /* ============ Buttons ============ */
+/* Every button is its own layer so the sheen and click ripple sit above its fill but below its label. */
+.btn-primary,
+.btn-secondary,
+.btn-light,
+.icon-button,
+.social-links a,
+.segmented .nav-link {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    -webkit-tap-highlight-color: transparent;
+}
 .btn-primary,
 .btn-secondary,
 .btn-light {
@@ -100,27 +112,49 @@ ul, ol { margin: 0; padding: 0; }
     line-height: 1;
     text-decoration: none;
     cursor: pointer;
-    transition: transform 0.2s var(--ease), background-color 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease);
+    transition:
+        transform 0.25s var(--ease),
+        box-shadow 0.3s var(--ease),
+        background-color 0.2s var(--ease),
+        background-position 0.5s var(--ease),
+        border-color 0.2s var(--ease),
+        color 0.2s var(--ease);
 }
 .btn-primary {
-    background: var(--grad);
+    /* Twice as wide as the button: at rest it shows the brand gradient, on hover it slides to a brighter violet. */
+    background: linear-gradient(95deg, #AA367C 0%, #4A2FBD 50%, #7a4dff 100%) 0 0 / 200% 100%;
     color: #fff;
     border: 0;
+    box-shadow: 0 6px 18px -10px rgba(122, 47, 189, 0.9);
 }
-.btn-primary:hover { color: #fff; transform: translateY(-1px); }
+.btn-primary::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+    transform: translateX(-110%);
+    pointer-events: none;
+}
 .btn-secondary {
     background: transparent;
     color: var(--text);
     border: 1px solid var(--border-strong);
 }
-.btn-secondary:hover { color: var(--text); border-color: var(--text); }
 .btn-light {
     background: #fff;
     color: #1d1340;
     border: 0;
+    box-shadow: 0 6px 18px -12px rgba(0, 0, 0, 0.5);
+    --ripple-opacity: 0.14;
 }
-.btn-light:hover { color: #1d1340; transform: translateY(-1px); }
 .btn-sm { min-height: 40px; padding: 0 16px; font-size: 0.9375rem; }
+
+.btn-primary svg,
+.btn-secondary svg,
+.btn-light svg,
+.project-card__more svg,
+.back-link svg { transition: transform 0.3s var(--ease); }
 
 .icon-button {
     display: inline-flex;
@@ -132,9 +166,8 @@ ul, ol { margin: 0; padding: 0; }
     color: var(--muted);
     border: 1px solid var(--border);
     font-size: 1.125rem;
-    transition: color 0.2s, border-color 0.2s;
+    transition: color 0.2s, border-color 0.2s, background-color 0.2s, transform 0.25s var(--ease);
 }
-.icon-button:hover { color: var(--text); border-color: var(--border-strong); }
 
 /* ============ Social links ============ */
 .social-links {
@@ -152,15 +185,83 @@ ul, ol { margin: 0; padding: 0; }
     border: 1px solid var(--border-strong);
     color: var(--text);
     font-size: 1.0625rem;
-    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
-}
-.social-links a:hover {
-    background: var(--text);
-    border-color: var(--text);
-    color: var(--bg);
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, transform 0.25s var(--ease), box-shadow 0.3s var(--ease);
 }
 .social-links--light a { border-color: rgba(255, 255, 255, 0.6); color: #fff; }
-.social-links--light a:hover { background: #fff; color: #3b2a8f; }
+
+/* Hover only where there is a real pointer, so a tap on a phone doesn't leave a button stuck "hovered". */
+@media (hover: hover) {
+    .btn-primary:hover {
+        color: #fff;
+        background-position: 100% 0;
+        transform: translateY(-2px);
+        box-shadow: 0 14px 30px -12px rgba(170, 54, 124, 0.75), 0 8px 24px -14px rgba(122, 77, 255, 0.9);
+    }
+    .btn-primary:hover::before { transform: translateX(110%); transition: transform 0.75s var(--ease); }
+    .btn-secondary:hover {
+        color: var(--text);
+        border-color: var(--accent);
+        background-color: var(--accent-tint);
+        transform: translateY(-2px);
+        box-shadow: 0 12px 26px -16px rgba(183, 140, 255, 0.7);
+    }
+    .btn-light:hover {
+        color: #1d1340;
+        transform: translateY(-2px);
+        box-shadow: 0 16px 32px -14px rgba(0, 0, 0, 0.55);
+    }
+    .icon-button:hover {
+        color: var(--text);
+        border-color: var(--border-strong);
+        background-color: rgba(255, 255, 255, 0.06);
+        transform: translateY(-2px);
+    }
+    .social-links a:hover {
+        background: var(--text);
+        border-color: var(--text);
+        color: var(--bg);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 22px -12px rgba(255, 255, 255, 0.45);
+    }
+    .social-links--light a:hover { background: #fff; color: #3b2a8f; }
+
+    /* Icons hint at what the button does. */
+    a:hover > .lucide-arrow-right,
+    .project-card:hover .project-card__more .lucide-arrow-right { transform: translateX(4px); }
+    a:hover > .lucide-arrow-left { transform: translateX(-4px); }
+    a:hover > .lucide-arrow-down { transform: translateY(3px); }
+    :is(a, button):hover > .lucide-download { transform: translateY(2px); }
+    a:hover > .lucide-external-link { transform: translate(2px, -2px); }
+    a:hover > .lucide-mail,
+    a:hover > .lucide-book-open { transform: rotate(-8deg) scale(1.08); }
+}
+
+/* Press: a quick, short sink that springs back on release. */
+.btn-primary:active,
+.btn-secondary:active,
+.btn-light:active {
+    transform: translateY(0) scale(0.96);
+    transition-duration: 0.08s;
+}
+.btn-primary:active { box-shadow: 0 4px 12px -8px rgba(122, 47, 189, 0.9); }
+.icon-button:active,
+.social-links a:active { transform: scale(0.9); transition-duration: 0.08s; }
+.segmented .nav-link:active { transform: scale(0.96); }
+
+/* Click ripple, added by useRipple at the pointer (or the centre, for keyboard presses). */
+.ripple {
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0;
+    pointer-events: none;
+    animation: ripple 0.65s var(--ease) forwards;
+}
+@keyframes ripple {
+    from { transform: scale(0); opacity: var(--ripple-opacity, 0.35); }
+    to { transform: scale(1); opacity: 0; }
+}
 
 /* ============ Navigation ============ */
 .site-nav {
@@ -326,6 +427,8 @@ ul, ol { margin: 0; padding: 0; }
 
 /* ============ Segmented control (tabs) ============ */
 .segmented {
+    position: relative;
+    isolation: isolate;
     display: inline-flex;
     flex-wrap: wrap;
     gap: 4px;
@@ -344,10 +447,23 @@ ul, ol { margin: 0; padding: 0; }
     font-weight: 500;
     font-size: 0.975rem;
     line-height: 1.2;
-    transition: color 0.2s, background-color 0.2s;
+    transition: color 0.25s, background-color 0.2s, transform 0.2s var(--ease);
 }
 .segmented .nav-link:hover { color: var(--text); }
 .segmented .nav-link.active { background: var(--grad); color: #fff; }
+/* Once SegmentedIndicator has measured, a single pill slides between options instead. */
+.segmented.has-indicator .nav-link.active { background: transparent; }
+.segmented__indicator {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    border-radius: 999px;
+    background: var(--grad);
+    box-shadow: 0 8px 20px -10px rgba(122, 47, 189, 0.9);
+    pointer-events: none;
+    transition: transform 0.45s var(--ease), width 0.45s var(--ease), height 0.45s var(--ease);
+}
 
 /* ============ Project and video cards ============ */
 .card-grid {
@@ -623,6 +739,11 @@ ul, ol { margin: 0; padding: 0; }
     .banner__copy > p { font-size: 1.0625rem; }
     .banner__art { max-width: 340px; margin-top: 48px; }
     .card-grid { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+    /* Toggles stay on one full-width row instead of wrapping inside the rounded track. */
+    .segmented { display: flex; flex-wrap: nowrap; width: 100%; }
+    .segmented > .nav-item,
+    .segmented > .nav-link { flex: 1 1 auto; }
+    .segmented .nav-link { width: 100%; padding: 10px 12px; font-size: 0.9375rem; white-space: nowrap; text-align: center; }
     .toolkit__group { grid-template-columns: minmax(0, 1fr); gap: 10px; }
     .toolkit__group dt { padding-top: 0; }
     .contact { padding: 72px 0; text-align: left; }
@@ -632,6 +753,10 @@ ul, ol { margin: 0; padding: 0; }
     .prose .shot-grid { grid-template-columns: minmax(0, 1fr); }
     .prose .shot-grid.phones { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .project-page__actions > a { flex: 1 1 100%; }
+}
+
+@media (max-width: 379.98px) {
+    .segmented .nav-link { padding: 9px 6px; font-size: 0.875rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

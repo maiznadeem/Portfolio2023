@@ -1,4 +1,5 @@
 import { Container, Tab, Nav } from "react-bootstrap";
+import SegmentedIndicator from "./SegmentedIndicator";
 
 import thumb1 from "../assets/thumbnails/Thumbnail1.jpg";
 import thumb2 from "../assets/thumbnails/Thumbnail2.jpg";
@@ -64,6 +65,7 @@ const Projects = () => (
                     <Nav.Item><Nav.Link eventKey="software">Software</Nav.Link></Nav.Item>
                     <Nav.Item><Nav.Link eventKey="video">Video editing</Nav.Link></Nav.Item>
                     <Nav.Item><Nav.Link eventKey="next">What's next</Nav.Link></Nav.Item>
+                    <SegmentedIndicator />
                 </Nav>
                 <Tab.Content>
                     <Tab.Pane eventKey="software">

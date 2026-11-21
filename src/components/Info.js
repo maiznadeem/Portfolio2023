@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Container from "react-bootstrap/Container";
 import { Award, BookOpen, Clapperboard, GraduationCap, Megaphone } from "lucide-react";
+import SegmentedIndicator from "./SegmentedIndicator";
 
 const timelines = {
     education: [
@@ -42,6 +43,7 @@ const Info = () => {
                                     {label}
                                 </button>
                             ))}
+                            <SegmentedIndicator />
                         </div>
                         <ol className="timeline">
                             {timelines[active].map(({ Icon, title, place, when }) => (

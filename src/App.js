@@ -9,6 +9,7 @@ import Info from './components/Info';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ProjectPage from './components/ProjectPage';
+import useRipple from './utils/useRipple';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -47,6 +48,8 @@ const Home = () => (
 );
 
 function App() {
+    useRipple();
+
     return (
         <div className="App">
             <a className="skip-link" href="#main">Skip to content</a>
