@@ -53,7 +53,7 @@ export const projects = [
         banner: homyzBanner,
         tech: ["React", "Mantine", "Leaflet", "Node.js", "Express", "Prisma", "MongoDB", "Auth0", "Cloudinary"],
         links: [
-            { kind: "live", label: "View live site", href: "https://homyz-real-estate.vercel.app/" },
+            { kind: "live", label: "View live site", href: "https://homyz.himaiz.com/" },
             { kind: "source", label: "Source code", href: "https://github.com/maiznadeem/HomyzRealEstate" },
         ],
         Content: lazy(() => import("../projects/content/Homyz")),
