@@ -4,6 +4,8 @@
 
 My portfolio website, live at **https://v1.portfolio.himaiz.com**.
 
+The public address to share is **https://portfolio.himaiz.com**. It redirects to v1 via a zone rule (a 302 that keeps the path and query), so it can point at a new portfolio later without changing any links.
+
 It's a single-page React app (Create React App, React Router, React Bootstrap) with a page for each project, my skills and toolkit, my experience, and my video editing work. Everything is static: there's no server, API, database or form.
 
 ## Local development
@@ -24,6 +26,7 @@ To preview the production build with the same headers and SPA fallback as the li
 |---|---|
 | **Host** | Cloudflare Workers static assets, Worker **`portfolio-v1`** ([`wrangler.toml`](wrangler.toml)). No Worker script runs, so requests are free and don't count against the account's Worker request quota. |
 | **Domain** | `v1.portfolio.himaiz.com`, attached as a Worker **custom domain**. It's two levels deep, which the zone's Universal SSL certificate doesn't cover, so the custom domain carries its own certificate, issued and renewed by Cloudflare. `workers_dev` and preview URLs are off. |
+| **Public address** | `portfolio.himaiz.com` redirects to v1 via a zone rule. It's a Single Redirect rule managed with the shared zone config, not by this repo: no Worker, just a proxied placeholder DNS record. |
 | **Routing** | `not_found_handling = "single-page-application"`: any path that isn't a file serves `index.html`, so deep links such as `/projects/homyz` work. |
 | **Build output** | `build/`. [`.env.production`](.env.production) sets `INLINE_RUNTIME_CHUNK=false`, so there's no inline script and the CSP can stay strict, and `GENERATE_SOURCEMAP=false`, so no source maps are published. |
 
