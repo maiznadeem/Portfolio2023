@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Container from "react-bootstrap/Container";
 import { Award, BookOpen, Clapperboard, GraduationCap, Megaphone } from "lucide-react";
 import SegmentedIndicator from "./SegmentedIndicator";
 
@@ -25,7 +24,7 @@ const Info = () => {
 
     return (
         <section className="section about" id="aboutme">
-            <Container>
+            <div className="container">
                 <header className="section__header">
                     <h2>About me</h2>
                 </header>
@@ -68,7 +67,7 @@ const Info = () => {
                         <p>Video games and football. I speak English and Urdu fluently.</p>
                     </div>
                 </div>
-            </Container>
+            </div>
         </section>
     );
 };

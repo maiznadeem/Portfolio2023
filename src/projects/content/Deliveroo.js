@@ -1,13 +1,8 @@
 import React from 'react';
 
-import start from '../../assets/screens/deliveroo/start.webp';
-import loginDark from '../../assets/screens/deliveroo/login-dark.webp';
-import dashboard from '../../assets/screens/deliveroo/dashboard.webp';
-import dashboardDark from '../../assets/screens/deliveroo/dashboard-dark.webp';
-import restaurant from '../../assets/screens/deliveroo/restaurant.webp';
-import basketDark from '../../assets/screens/deliveroo/basket-dark.webp';
-import delivery from '../../assets/screens/deliveroo/delivery.webp';
-import profileDark from '../../assets/screens/deliveroo/profile-dark.webp';
+import { loadImages, SIZES } from '../../utils/images';
+
+const shots = loadImages(require.context('../../assets/screens/deliveroo', false, /\.webp$/));
 
 const RELEASES = "https://github.com/MaizNadeem/Deliveroo-2.0/releases/latest";
 
@@ -35,14 +30,14 @@ const Deliveroo = () => (
 
         <h2>Screenshots</h2>
         <div className="shot-grid phones">
-            <img src={start} alt="Start screen" />
-            <img src={loginDark} alt="Log in, dark mode" loading="lazy" />
-            <img src={dashboard} alt="Dashboard" loading="lazy" />
-            <img src={dashboardDark} alt="Dashboard, dark mode" loading="lazy" />
-            <img src={restaurant} alt="Restaurant menu with a dish in the basket" loading="lazy" />
-            <img src={basketDark} alt="Basket, dark mode" loading="lazy" />
-            <img src={delivery} alt="Live delivery map" loading="lazy" />
-            <img src={profileDark} alt="Profile, dark mode" loading="lazy" />
+            <img {...shots.start} width="540" height="1200" sizes={SIZES.phone} alt="Start screen" />
+            <img {...shots.loginDark} width="540" height="1200" sizes={SIZES.phone} alt="Log in, dark mode" loading="lazy" />
+            <img {...shots.dashboard} width="540" height="1200" sizes={SIZES.phone} alt="Dashboard" loading="lazy" />
+            <img {...shots.dashboardDark} width="540" height="1200" sizes={SIZES.phone} alt="Dashboard, dark mode" loading="lazy" />
+            <img {...shots.restaurant} width="540" height="1200" sizes={SIZES.phone} alt="Restaurant menu with a dish in the basket" loading="lazy" />
+            <img {...shots.basketDark} width="540" height="1200" sizes={SIZES.phone} alt="Basket, dark mode" loading="lazy" />
+            <img {...shots.delivery} width="540" height="1200" sizes={SIZES.phone} alt="Live delivery map" loading="lazy" />
+            <img {...shots.profileDark} width="540" height="1200" sizes={SIZES.phone} alt="Profile, dark mode" loading="lazy" />
         </div>
 
         <h2>Secure by Default</h2>

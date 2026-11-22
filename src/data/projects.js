@@ -1,17 +1,9 @@
 import { lazy } from "react";
 
-import helphiveCard from "../assets/projects/proj7.webp";
-import greatReadCard from "../assets/projects/proj8.webp";
-import homyzCard from "../assets/projects/proj1.webp";
-import deliverooCard from "../assets/projects/proj2.webp";
-import lifestreamCard from "../assets/projects/proj3.webp";
-import nftCard from "../assets/projects/proj4.webp";
-import helphiveBanner from "../assets/banners/proj7.webp";
-import greatReadBanner from "../assets/banners/proj8.webp";
-import homyzBanner from "../assets/banners/proj1.webp";
-import deliverooBanner from "../assets/banners/proj2.webp";
-import lifestreamBanner from "../assets/banners/proj3.webp";
-import nftBanner from "../assets/banners/proj4.webp";
+import { loadImages } from "../utils/images";
+
+const cards = loadImages(require.context("../assets/projects", false, /\.webp$/));
+const banners = loadImages(require.context("../assets/banners", false, /\.webp$/));
 
 // Each link has a kind: live, download, article or source (sets its icon).
 export const projects = [
@@ -20,8 +12,8 @@ export const projects = [
         name: "HelpHive",
         tagline: "Hospitality staffing marketplace",
         summary: "Hotels book staff by the shift through a web app, an Android app and an admin console, all on one Node.js API with Stripe payments.",
-        image: helphiveCard,
-        banner: helphiveBanner,
+        image: cards.proj7,
+        banner: banners.proj7,
         tech: ["React", "TypeScript", "React Native", "Node.js", "MongoDB", "Stripe", "Google Cloud"],
         links: [
             { kind: "live", label: "Open the web app", href: "https://helphive.himaiz.com" },
@@ -35,8 +27,8 @@ export const projects = [
         name: "Great Read",
         tagline: "Non-fiction book discovery",
         summary: "A library of 2,100+ non-fiction books with quotes, a reading-list builder and paid study notes through Stripe.",
-        image: greatReadCard,
-        banner: greatReadBanner,
+        image: cards.proj8,
+        banner: banners.proj8,
         tech: ["React", "Vite", "Tailwind CSS", "Node.js", "MongoDB", "Stripe", "Google Cloud"],
         links: [
             { kind: "live", label: "Visit Great Read", href: "https://greatread.himaiz.com" },
@@ -49,8 +41,8 @@ export const projects = [
         name: "Homyz",
         tagline: "Real estate website",
         summary: "Browse homes for sale on a map, save favourites, book visits and list your own property, on a hardened Node.js API.",
-        image: homyzCard,
-        banner: homyzBanner,
+        image: cards.proj1,
+        banner: banners.proj1,
         tech: ["React", "Mantine", "Leaflet", "Node.js", "Express", "Prisma", "MongoDB", "Auth0", "Cloudinary"],
         links: [
             { kind: "live", label: "View live site", href: "https://homyz.himaiz.com/" },
@@ -63,8 +55,8 @@ export const projects = [
         name: "Deliveroo Clone",
         tagline: "Food delivery app",
         summary: "Browse restaurants, fill a basket and follow your rider on a live map, in light or dark mode, on a Firebase backend locked to the genuine app.",
-        image: deliverooCard,
-        banner: deliverooBanner,
+        image: cards.proj2,
+        banner: banners.proj2,
         tech: ["React Native", "Expo", "Redux", "NativeWind", "Firebase", "Google Maps"],
         links: [
             { kind: "download", label: "Download for Android", href: "https://github.com/MaizNadeem/Deliveroo-2.0/releases/latest" },
@@ -77,8 +69,8 @@ export const projects = [
         name: "Lifestream",
         tagline: "Blood bank management",
         summary: "A blood bank management desktop app rebuilt on .NET 11, with a WPF client, an ASP.NET Core API and Azure SQL.",
-        image: lifestreamCard,
-        banner: lifestreamBanner,
+        image: cards.proj3,
+        banner: banners.proj3,
         tech: [".NET", "WPF", "ASP.NET Core", "Azure SQL"],
         links: [
             { kind: "download", label: "Download for Windows", href: "https://github.com/maiznadeem/lifestream/releases/latest" },
@@ -91,8 +83,8 @@ export const projects = [
         name: "NFT Marketplace",
         tagline: "Digital art app for Android",
         summary: "Browse and search curated digital art with full bid histories and light and dark themes, on a Firebase backend only the genuine app can read.",
-        image: nftCard,
-        banner: nftBanner,
+        image: cards.proj4,
+        banner: banners.proj4,
         tech: ["React Native", "Expo", "Firebase", "App Check"],
         links: [
             { kind: "download", label: "Download for Android", href: "https://github.com/maiznadeem/NFTMarketplace/releases/latest" },

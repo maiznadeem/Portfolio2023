@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight, BookOpen, Download, ExternalLink } from "lucide-
 import { FaGithub } from "react-icons/fa6";
 
 import { findProject, projects } from "../data/projects";
+import { SIZES } from "../utils/images";
 
 const linkIcons = { live: ExternalLink, download: Download, article: BookOpen, source: FaGithub };
 
@@ -52,7 +53,7 @@ const ProjectPage = () => {
                     </div>
                 </header>
 
-                <img className="project-page__banner" src={banner} alt={`${name} screens`} width="1280" height="500" fetchpriority="high" />
+                <img {...banner} className="project-page__banner" sizes={SIZES.banner} alt={`${name} screens`} width="1280" height="500" fetchpriority="high" />
 
                 <div className="prose">
                     <Suspense fallback={<p className="prose__loading">Loading project details…</p>}>

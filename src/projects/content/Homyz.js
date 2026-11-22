@@ -1,10 +1,8 @@
 import React from 'react';
 
-import home from '../../assets/screens/homyz/home.webp';
-import properties from '../../assets/screens/homyz/properties.webp';
-import property from '../../assets/screens/homyz/property.webp';
-import mobileProperties from '../../assets/screens/homyz/m-properties.webp';
-import mobileProperty from '../../assets/screens/homyz/m-property.webp';
+import { loadImages, SIZES } from '../../utils/images';
+
+const shots = loadImages(require.context('../../assets/screens/homyz', false, /\.webp$/));
 
 const Homyz = () => (
     <>
@@ -32,15 +30,15 @@ const Homyz = () => (
 
         <h2>Screenshots</h2>
         <figure className="shot">
-            <img src={home} alt="Homyz home page with search and listing stats" />
+            <img {...shots.home} width="1440" height="900" sizes={SIZES.shot} alt="Homyz home page with search and listing stats" />
         </figure>
         <div className="shot-grid">
-            <img src={properties} alt="All properties with search" loading="lazy" />
-            <img src={property} alt="Property details with its location on a map" loading="lazy" />
+            <img {...shots.properties} width="1440" height="900" sizes={SIZES.half} alt="All properties with search" loading="lazy" />
+            <img {...shots.property} width="1440" height="1180" sizes={SIZES.half} alt="Property details with its location on a map" loading="lazy" />
         </div>
         <div className="shot-grid phones">
-            <img src={mobileProperties} alt="Properties on a phone" loading="lazy" />
-            <img src={mobileProperty} alt="Property details on a phone" loading="lazy" />
+            <img {...shots.mProperties} width="390" height="844" sizes={SIZES.phone} alt="Properties on a phone" loading="lazy" />
+            <img {...shots.mProperty} width="390" height="844" sizes={SIZES.phone} alt="Property details on a phone" loading="lazy" />
         </div>
 
         <h2>Tech Stack</h2>

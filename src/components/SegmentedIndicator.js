@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef } from "react";
 
 // A gradient pill that slides to whichever option of its parent .segmented control is active.
-// It watches the options' classes, so it works with react-bootstrap tabs and plain buttons alike.
+// It watches the options' classes, so it follows tabs and toggle buttons alike.
 const SegmentedIndicator = () => {
     const ref = useRef(null);
 

@@ -2,13 +2,15 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { FaGithub } from "react-icons/fa6";
 
+import { SIZES } from "../utils/images";
+
 // The title link covers the whole card; the source link sits above it.
 export const ProjectCard = ({ slug, name, tagline, summary, image, links }) => {
     const source = links.find((l) => l.kind === "source");
     return (
         <article className="project-card">
             <div className="project-card__media">
-                <img src={image} alt="" width="1280" height="720" loading="lazy" decoding="async" />
+                <img {...image} sizes={SIZES.card} alt="" width="1280" height="720" loading="lazy" decoding="async" />
             </div>
             <div className="project-card__body">
                 <p className="project-card__tagline">{tagline}</p>

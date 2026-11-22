@@ -1,5 +1,4 @@
 import { Clapperboard, Globe, Monitor, Palette, Smartphone } from "lucide-react";
-import Container from "react-bootstrap/Container";
 
 import javascript from "../assets/tech/javascript.svg";
 import typescript from "../assets/tech/typescript.svg";
@@ -47,7 +46,7 @@ const toolkit = [
 
 const Skills = () => (
     <section className="section skill" id="skills">
-        <Container>
+        <div className="container">
             <header className="section__header">
                 <h2>Skills</h2>
                 <p>I work across the stack and across media: the same person who builds the API can cut the launch video.</p>
@@ -83,7 +82,7 @@ const Skills = () => (
                     ))}
                 </dl>
             </div>
-        </Container>
+        </div>
     </section>
 );
 

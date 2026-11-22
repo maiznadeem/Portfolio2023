@@ -1,19 +1,8 @@
 import React from 'react';
 
-import webLanding from '../../assets/screens/helphive/web-landing.webp';
-import webBookingForm from '../../assets/screens/helphive/web-booking-form.webp';
-import webBookings from '../../assets/screens/helphive/web-bookings.webp';
-import webDark from '../../assets/screens/helphive/web-dark-booking-form.webp';
-import webProviderHome from '../../assets/screens/helphive/web-provider-home.webp';
-import webProviderOrders from '../../assets/screens/helphive/web-provider-orders.webp';
-import webProviderEarnings from '../../assets/screens/helphive/web-provider-earnings.webp';
-import adminOverview from '../../assets/screens/helphive/admin-overview.webp';
-import adminApplication from '../../assets/screens/helphive/admin-application.webp';
-import appBookService from '../../assets/screens/helphive/app-book-service.webp';
-import appBookings from '../../assets/screens/helphive/app-bookings.webp';
-import appProviderMap from '../../assets/screens/helphive/app-provider-map.webp';
-import appDarkBookService from '../../assets/screens/helphive/app-dark-book-service.webp';
-import appDarkEarnings from '../../assets/screens/helphive/app-dark-earnings.webp';
+import { loadImages, SIZES } from '../../utils/images';
+
+const shots = loadImages(require.context('../../assets/screens/helphive', false, /\.webp$/));
 
 const ORG = "https://github.com/Helphive";
 const WEB = "https://helphive.himaiz.com";
@@ -65,30 +54,30 @@ const HelpHive = () => (
 
         <h3>Web App</h3>
         <figure className="shot">
-            <img src={webLanding} alt="HelpHive landing page" />
+            <img {...shots.webLanding} width="1440" height="900" sizes={SIZES.shot} alt="HelpHive landing page" />
         </figure>
         <div className="shot-grid">
-            <img src={webBookingForm} alt="Booking form" loading="lazy" />
-            <img src={webBookings} alt="Customer bookings" loading="lazy" />
-            <img src={webProviderHome} alt="Provider home" loading="lazy" />
-            <img src={webProviderOrders} alt="Provider orders" loading="lazy" />
-            <img src={webProviderEarnings} alt="Provider earnings" loading="lazy" />
-            <img src={webDark} alt="Booking form in dark mode" loading="lazy" />
+            <img {...shots.webBookingForm} width="1440" height="900" sizes={SIZES.half} alt="Booking form" loading="lazy" />
+            <img {...shots.webBookings} width="1440" height="900" sizes={SIZES.half} alt="Customer bookings" loading="lazy" />
+            <img {...shots.webProviderHome} width="1440" height="900" sizes={SIZES.half} alt="Provider home" loading="lazy" />
+            <img {...shots.webProviderOrders} width="1440" height="900" sizes={SIZES.half} alt="Provider orders" loading="lazy" />
+            <img {...shots.webProviderEarnings} width="1440" height="900" sizes={SIZES.half} alt="Provider earnings" loading="lazy" />
+            <img {...shots.webDarkBookingForm} width="1440" height="900" sizes={SIZES.half} alt="Booking form in dark mode" loading="lazy" />
         </div>
 
         <h3>Android App</h3>
         <div className="shot-grid phones">
-            <img src={appBookService} alt="Book a service" loading="lazy" />
-            <img src={appBookings} alt="Bookings" loading="lazy" />
-            <img src={appProviderMap} alt="Provider home with location" loading="lazy" />
-            <img src={appDarkBookService} alt="Book a service in dark mode" loading="lazy" />
-            <img src={appDarkEarnings} alt="Provider earnings in dark mode" loading="lazy" />
+            <img {...shots.appBookService} width="540" height="1152" sizes={SIZES.phone} alt="Book a service" loading="lazy" />
+            <img {...shots.appBookings} width="540" height="1152" sizes={SIZES.phone} alt="Bookings" loading="lazy" />
+            <img {...shots.appProviderMap} width="540" height="1152" sizes={SIZES.phone} alt="Provider home with location" loading="lazy" />
+            <img {...shots.appDarkBookService} width="540" height="1152" sizes={SIZES.phone} alt="Book a service in dark mode" loading="lazy" />
+            <img {...shots.appDarkEarnings} width="540" height="1152" sizes={SIZES.phone} alt="Provider earnings in dark mode" loading="lazy" />
         </div>
 
         <h3>Admin Console</h3>
         <div className="shot-grid">
-            <img src={adminOverview} alt="Admin overview" loading="lazy" />
-            <img src={adminApplication} alt="Provider application review" loading="lazy" />
+            <img {...shots.adminOverview} width="1440" height="900" sizes={SIZES.half} alt="Admin overview" loading="lazy" />
+            <img {...shots.adminApplication} width="1440" height="900" sizes={SIZES.half} alt="Provider application review" loading="lazy" />
         </div>
 
         <h2>Architecture</h2>

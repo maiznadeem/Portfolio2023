@@ -1,9 +1,8 @@
 import React from 'react';
 
-import homeLight from '../../assets/screens/nft/home-light.webp';
-import detailsLight from '../../assets/screens/nft/details-light.webp';
-import homeDark from '../../assets/screens/nft/home-dark.webp';
-import detailsDark from '../../assets/screens/nft/details-dark.webp';
+import { loadImages, SIZES } from '../../utils/images';
+
+const shots = loadImages(require.context('../../assets/screens/nft', false, /\.webp$/));
 
 const RELEASES = "https://github.com/maiznadeem/NFTMarketplace/releases/latest";
 
@@ -25,10 +24,10 @@ const NftMarketplace = () => (
 
         <h2>Screenshots</h2>
         <div className="shot-grid phones framed">
-            <img src={homeLight} alt="Home, light theme" />
-            <img src={detailsLight} alt="Details, light theme" loading="lazy" />
-            <img src={homeDark} alt="Home, dark theme" loading="lazy" />
-            <img src={detailsDark} alt="Details, dark theme" loading="lazy" />
+            <img {...shots.homeLight} width="360" height="768" sizes={SIZES.phone} alt="Home, light theme" />
+            <img {...shots.detailsLight} width="360" height="768" sizes={SIZES.phone} alt="Details, light theme" loading="lazy" />
+            <img {...shots.homeDark} width="360" height="768" sizes={SIZES.phone} alt="Home, dark theme" loading="lazy" />
+            <img {...shots.detailsDark} width="360" height="768" sizes={SIZES.phone} alt="Details, dark theme" loading="lazy" />
         </div>
 
         <h2>Locked-Down Backend</h2>

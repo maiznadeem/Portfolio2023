@@ -1,16 +1,15 @@
 import { Link } from "react-router-dom";
-import Container from "react-bootstrap/Container";
 
 import logo from "../assets/img/Logo.webp";
 import { SocialLinks } from "./social";
 
 const Footer = () => (
     <footer className="footer">
-        <Container className="footer__inner">
-            <Link to="/" className="footer__logo"><img src={logo} alt="M. Maiz, home" width="500" height="180" loading="lazy" /></Link>
+        <div className="container footer__inner">
+            <Link to="/" className="footer__logo"><img src={logo} alt="M. Maiz, home" width="300" height="108" loading="lazy" /></Link>
             <SocialLinks />
             <p>© {new Date().getFullYear()} M. Maiz Nadeem</p>
-        </Container>
+        </div>
     </footer>
 );
 

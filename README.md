@@ -6,7 +6,7 @@ My portfolio website, live at **https://v1.portfolio.himaiz.com**.
 
 The public address to share is **https://portfolio.himaiz.com**. It redirects to v1 via a zone rule (a 302 that keeps the path and query), so it can point at a new portfolio later without changing any links.
 
-It's a single-page React app (Create React App, React Router, React Bootstrap) with a page for each project, my skills and toolkit, my experience, and my video editing work. Everything is static: there's no server, API, database or form.
+It's a single-page React app (Create React App, React Router, and Bootstrap's grid) with a page for each project, my skills and toolkit, my experience, and my video editing work. Everything is static: there's no server, API, database or form.
 
 ## Local development
 
@@ -35,9 +35,10 @@ The site used to be on Vercel. That project has been deleted.
 ## Performance conventions
 
 - **Images are WebP.** Convert screenshots and art to WebP (around quality 80) before adding them under `src/assets/`. The only exceptions are the SVG tech logos, the PWA icons and favicon in `public/`, and `public/og-preview.png` (the link-preview image, kept as PNG for social crawlers).
+- **Large images come in two sizes.** An image 1280px or wider gets a 720px copy, and a 540px phone screenshot gets a 360px one, saved side by side as `<name>.<width>.webp` (`home.1440.webp` and `home.720.webp`). Skip the copy if it would be under 10 KB, because CRA would inline it into the JavaScript. Pages load a folder of images with `loadImages(require.context(...))` from [`src/utils/images.js`](src/utils/images.js), which gives each image a `src` and a `srcSet`. Spread it onto the `<img>` and add the matching `sizes` from `SIZES`, so phones download the small copy.
 - **Give every `<img>` its `width` and `height`** so the layout doesn't shift while images load. Below-the-fold images get `loading="lazy"`. A project page's banner is its largest element, so it gets `fetchpriority="high"`.
 - **Fonts and the hero background live in `public/`** under fixed names (`public/fonts/*.woff2`, `public/hero-bg.webp`). That way `public/index.html` can preload them and declare them inline (`@font-face` and the `.banner` background), so the text doesn't reflow when the fonts arrive and the hero paints sooner. If you change one of these files, rename it: `/fonts/*` is cached as immutable.
-- **Bootstrap is trimmed.** [`src/bootstrap.scss`](src/bootstrap.scss) compiles only the parts in use (base styles, containers, grid, tabs and their fade). The navigation is the site's own. `sass` is pinned to `1.77.6`: newer versions print deprecation warnings for Bootstrap 5.3, which a `CI=true` build treats as errors.
+- **Bootstrap is trimmed.** [`src/bootstrap.scss`](src/bootstrap.scss) compiles only the parts in use (base styles, containers, the grid, `.nav-link` and the tab panes). There's no react-bootstrap: the layout is plain `container`, `row` and `col-*` classes, and the navigation and the Projects tabs are the site's own components. `sass` is pinned to `1.77.6`: newer versions print deprecation warnings for Bootstrap 5.3, which a `CI=true` build treats as errors.
 
 ## Deploys (CD): Workers Builds
 

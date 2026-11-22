@@ -1,15 +1,8 @@
 import React from 'react';
 
-import home from '../../assets/screens/greatread/home.webp';
-import category from '../../assets/screens/greatread/category-leadership.webp';
-import quotesSearch from '../../assets/screens/greatread/book-quotes-search.webp';
-import readingList from '../../assets/screens/greatread/reading-list.webp';
-import readingListPdf from '../../assets/screens/greatread/reading-list-pdf-preview.webp';
-import notesPricing from '../../assets/screens/greatread/notes-pricing.webp';
-import notesSelection from '../../assets/screens/greatread/notes-book-selection.webp';
-import adminBooks from '../../assets/screens/greatread/admin-books.webp';
-import adminEditor from '../../assets/screens/greatread/admin-book-editor.webp';
-import mobileHome from '../../assets/screens/greatread/mobile-home.webp';
+import { loadImages, SIZES } from '../../utils/images';
+
+const shots = loadImages(require.context('../../assets/screens/greatread', false, /\.webp$/));
 
 const SITE = "https://greatread.himaiz.com";
 
@@ -49,26 +42,26 @@ const GreatRead = () => (
 
         <h3>Home</h3>
         <figure className="shot">
-            <img src={home} alt="Great Read home page" />
+            <img {...shots.home} width="1440" height="900" sizes={SIZES.shot} alt="Great Read home page" />
         </figure>
 
         <h3>Library, Reading List and Notes</h3>
         <div className="shot-grid">
-            <img src={category} alt="Library filtered to the Leadership category" loading="lazy" />
-            <img src={quotesSearch} alt="Search results with quotes and buy links" loading="lazy" />
-            <img src={readingList} alt="A finished reading list" loading="lazy" />
-            <img src={readingListPdf} alt="Reading list PDF export" loading="lazy" />
-            <img src={notesPricing} alt="Notes bundles and page preview" loading="lazy" />
-            <img src={notesSelection} alt="Choosing books for notes" loading="lazy" />
+            <img {...shots.categoryLeadership} width="1440" height="900" sizes={SIZES.half} alt="Library filtered to the Leadership category" loading="lazy" />
+            <img {...shots.bookQuotesSearch} width="1440" height="900" sizes={SIZES.half} alt="Search results with quotes and buy links" loading="lazy" />
+            <img {...shots.readingList} width="1440" height="900" sizes={SIZES.half} alt="A finished reading list" loading="lazy" />
+            <img {...shots.readingListPdfPreview} width="1440" height="900" sizes={SIZES.half} alt="Reading list PDF export" loading="lazy" />
+            <img {...shots.notesPricing} width="1440" height="900" sizes={SIZES.half} alt="Notes bundles and page preview" loading="lazy" />
+            <img {...shots.notesBookSelection} width="1440" height="900" sizes={SIZES.half} alt="Choosing books for notes" loading="lazy" />
         </div>
 
         <h3>Admin Console and Mobile</h3>
         <div className="shot-grid">
-            <img src={adminBooks} alt="Admin books list" loading="lazy" />
-            <img src={adminEditor} alt="Admin book editor" loading="lazy" />
+            <img {...shots.adminBooks} width="1440" height="900" sizes={SIZES.half} alt="Admin books list" loading="lazy" />
+            <img {...shots.adminBookEditor} width="1440" height="900" sizes={SIZES.half} alt="Admin book editor" loading="lazy" />
         </div>
         <div className="shot-grid phones">
-            <img src={mobileHome} alt="Home page on a phone" loading="lazy" />
+            <img {...shots.mobileHome} width="540" height="1169" sizes={SIZES.phone} alt="Home page on a phone" loading="lazy" />
         </div>
 
         <h2>Architecture</h2>

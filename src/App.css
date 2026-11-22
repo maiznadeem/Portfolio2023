@@ -474,6 +474,8 @@ ul, ol { margin: 0; padding: 0; }
 .segmented .nav-link.active { background: var(--grad); color: #fff; }
 /* Once SegmentedIndicator has measured, a single pill slides between options instead. */
 .segmented.has-indicator .nav-link.active { background: transparent; }
+.tab-content > .active { animation: pane-in 0.2s linear; }
+@keyframes pane-in { from { opacity: 0; } }
 .segmented__indicator {
     position: absolute;
     left: 0;
@@ -845,9 +847,10 @@ ul, ol { margin: 0; padding: 0; }
     .card-grid { grid-template-columns: minmax(0, 1fr); gap: 20px; }
     /* Toggles stay on one full-width row instead of wrapping inside the rounded track. */
     .segmented { display: flex; flex-wrap: nowrap; width: 100%; }
-    .segmented > .nav-item,
     .segmented > .nav-link { flex: 1 1 auto; }
     .segmented .nav-link { width: 100%; padding: 10px 12px; font-size: 0.9375rem; white-space: nowrap; text-align: center; }
+    /* The Projects tabs share the row by label length; the About toggle's two options split it evenly. */
+    .segmented[role="tablist"] > .nav-link { width: auto; }
     .toolkit__group { grid-template-columns: minmax(0, 1fr); gap: 10px; }
     .toolkit__group dt { padding-top: 0; }
     .contact { padding: 72px 0; text-align: left; }

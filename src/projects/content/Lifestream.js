@@ -1,27 +1,20 @@
 import React from 'react';
 
-import login from '../../assets/screens/lifestream/login.webp';
-import dashboard from '../../assets/screens/lifestream/dashboard.webp';
-import donors from '../../assets/screens/lifestream/donors.webp';
-import patients from '../../assets/screens/lifestream/patients.webp';
-import appointments from '../../assets/screens/lifestream/appointments.webp';
-import requests from '../../assets/screens/lifestream/requests.webp';
-import stock from '../../assets/screens/lifestream/stock.webp';
-import receipts from '../../assets/screens/lifestream/receipts.webp';
-import staff from '../../assets/screens/lifestream/staff.webp';
-import profile from '../../assets/screens/lifestream/profile.webp';
+import { loadImages, SIZES } from '../../utils/images';
+
+const shots = loadImages(require.context('../../assets/screens/lifestream', false, /\.webp$/));
 
 const REPO = "https://github.com/maiznadeem/Lifestream";
 
 const VIEWS = [
-    [donors, "Donors"],
-    [patients, "Patients"],
-    [appointments, "Appointments"],
-    [requests, "Requests"],
-    [stock, "Stock"],
-    [receipts, "Receipts"],
-    [staff, "Staff"],
-    [profile, "Profile"],
+    [shots.donors, "Donors"],
+    [shots.patients, "Patients"],
+    [shots.appointments, "Appointments"],
+    [shots.requests, "Requests"],
+    [shots.stock, "Stock"],
+    [shots.receipts, "Receipts"],
+    [shots.staff, "Staff"],
+    [shots.profile, "Profile"],
 ];
 
 const Lifestream = () => (
@@ -60,18 +53,18 @@ const Lifestream = () => (
 
         <h3>Sign In</h3>
         <figure className="shot">
-            <img src={login} alt="Sign In Screen" />
+            <img {...shots.login} width="1366" height="768" sizes={SIZES.shot} alt="Sign In Screen" />
         </figure>
 
         <h3>Dashboard</h3>
         <figure className="shot">
-            <img src={dashboard} alt="Dashboard" loading="lazy" />
+            <img {...shots.dashboard} width="1366" height="768" sizes={SIZES.shot} alt="Dashboard" loading="lazy" />
         </figure>
 
         <h3>Other Views</h3>
         <div className="shot-grid">
-            {VIEWS.map(([src, label]) => (
-                <img key={label} src={src} alt={`${label} View`} loading="lazy" />
+            {VIEWS.map(([shot, label]) => (
+                <img key={label} {...shot} width="1366" height="768" sizes={SIZES.half} alt={`${label} View`} loading="lazy" />
             ))}
         </div>
 

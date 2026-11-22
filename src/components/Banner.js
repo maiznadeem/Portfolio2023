@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowDown, Download } from "lucide-react";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 
 import headerImg from "../assets/img/header-img.svg";
 import { downloadResume } from "../utils/resume";
@@ -45,9 +42,9 @@ const Banner = () => {
 
     return (
         <section className="banner" id="home">
-            <Container>
-                <Row className="align-items-center">
-                    <Col xs={12} md={7} xl={7}>
+            <div className="container">
+                <div className="row align-items-center">
+                    <div className="col-12 col-md-7">
                         <div className="banner__copy">
                             <h1>
                                 Hi, I'm Maiz.
@@ -67,12 +64,12 @@ const Banner = () => {
                             </div>
                             <p className="banner__email">Or email <a href={`mailto:${EMAIL}`}>{EMAIL}</a></p>
                         </div>
-                    </Col>
-                    <Col xs={12} md={5} xl={5}>
+                    </div>
+                    <div className="col-12 col-md-5">
                         <img className="banner__art" src={headerImg} alt="" width="682" height="614" />
-                    </Col>
-                </Row>
-            </Container>
+                    </div>
+                </div>
+            </div>
         </section>
     );
 };

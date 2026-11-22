@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import Container from "react-bootstrap/Container";
 import { Download } from "lucide-react";
 
 import logo from "../assets/img/Logo.webp";
@@ -103,9 +102,9 @@ const NavigationBar = () => {
 
     return (
         <header className={`site-nav${solid ? " is-solid" : ""}${open ? " is-open" : ""}`}>
-            <Container className="site-nav__bar">
+            <div className="container site-nav__bar">
                 <Link to="/" onClick={close} className="site-nav__brand">
-                    <img src={logo} alt="M. Maiz, home" width="500" height="180" />
+                    <img src={logo} alt="M. Maiz, home" width="300" height="108" />
                 </Link>
 
                 <nav className="site-nav__links" aria-label="Main">
@@ -132,7 +131,7 @@ const NavigationBar = () => {
                     <span aria-hidden="true" />
                     <span aria-hidden="true" />
                 </button>
-            </Container>
+            </div>
 
             <div
                 id="site-nav-menu"
