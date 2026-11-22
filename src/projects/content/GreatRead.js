@@ -73,7 +73,7 @@ const GreatRead = () => (
 
         <h2>Architecture</h2>
         <p>
-            The reader site and the admin console are two Vercel projects that deploy from main, each with its own security headers. The API is a Docker container on Google Cloud Run that scales to zero, built and deployed by a Cloud Build trigger on every push. It runs as its own keyless service account, scoped to two Cloud Storage buckets: a public one for covers and icons, and a private one for purchased documents, which are served through signed URLs and deleted after a day. GitHub Actions lints and builds every push and pull request.
+            The reader site and admin console are static React builds served from Cloudflare Workers, and the Express API runs on Google Cloud Run behind a Cloudflare Worker that only lets traffic through Cloudflare's WAF. Every push to main deploys automatically (Workers Builds and Cloud Build). The API runs as its own keyless service account, scoped to two Cloud Storage buckets: a public one for covers and icons, and a private one for purchased documents, which are served through signed URLs and deleted after a day. GitHub Actions lints and builds every push and pull request.
         </p>
 
         <h2>Technologies Used</h2>
@@ -82,7 +82,7 @@ const GreatRead = () => (
             <li><strong>Admin console:</strong> React 19, Vite, Tailwind CSS and React Router.</li>
             <li><strong>API:</strong> Node.js with Express 5 and MongoDB through Mongoose, with sessions stored in MongoDB, shared rate limiting and Helmet security headers.</li>
             <li><strong>Payments and documents:</strong> Stripe Checkout with a webhook for fulfilment, docx to generate the notes, headless LibreOffice for the PDF conversion, and sharp for image compression.</li>
-            <li><strong>Infrastructure:</strong> Google Cloud Run, Cloud Build, Cloud Storage, MongoDB Atlas, Vercel, GitHub Actions and Cloudflare DNS.</li>
+            <li><strong>Infrastructure:</strong> Cloudflare (Workers, WAF), Google Cloud Run, Cloud Build, Secret Manager, Cloud Storage, MongoDB Atlas, Stripe and reCAPTCHA Enterprise.</li>
         </ul>
     </>
 );

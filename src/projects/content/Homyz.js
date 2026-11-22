@@ -47,6 +47,7 @@ const Homyz = () => (
         <ul>
             <li><strong>Front end:</strong> React with Vite, React Router 7, Mantine, React Query, Leaflet and Swiper.</li>
             <li><strong>Back end:</strong> Node.js and Express on Vercel serverless functions, with Prisma on MongoDB Atlas.</li>
+            <li><strong>Hosting:</strong> The site is a static build served from Cloudflare Workers, and the API on Vercel sits behind a Cloudflare Worker, so both are behind Cloudflare's WAF. Every push to main deploys automatically.</li>
             <li><strong>Services:</strong> Auth0 for sign-in, Cloudinary for photo uploads and delivery, and a daily Vercel cron that keeps the free Atlas cluster awake.</li>
         </ul>
     </>
