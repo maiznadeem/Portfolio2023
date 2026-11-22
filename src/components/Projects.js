@@ -1,13 +1,13 @@
 import { Container, Tab, Nav } from "react-bootstrap";
 import SegmentedIndicator from "./SegmentedIndicator";
 
-import thumb1 from "../assets/thumbnails/Thumbnail1.jpg";
-import thumb2 from "../assets/thumbnails/Thumbnail2.jpg";
-import thumb3 from "../assets/thumbnails/Thumbnail3.jpg";
-import thumb4 from "../assets/thumbnails/Thumbnail4.jpg";
-import thumb5 from "../assets/thumbnails/Thumbnail5.jpg";
-import thumb6 from "../assets/thumbnails/Thumbnail6.jpg";
-import innovation2 from "../assets/img/innovation2.jpg";
+import thumb1 from "../assets/thumbnails/Thumbnail1.webp";
+import thumb2 from "../assets/thumbnails/Thumbnail2.webp";
+import thumb3 from "../assets/thumbnails/Thumbnail3.webp";
+import thumb4 from "../assets/thumbnails/Thumbnail4.webp";
+import thumb5 from "../assets/thumbnails/Thumbnail5.webp";
+import thumb6 from "../assets/thumbnails/Thumbnail6.webp";
+import innovation2 from "../assets/img/innovation2.webp";
 
 import { projects } from "../data/projects";
 import { ProjectCard } from "./ProjectCard";
@@ -83,7 +83,7 @@ const Projects = () => (
                     </Tab.Pane>
                     <Tab.Pane eventKey="next">
                         <div className="future">
-                            <img src={innovation2} alt="" loading="lazy" />
+                            <img src={innovation2} alt="" width="580" height="328" loading="lazy" />
                             <div>
                                 <h3>Where I'm headed</h3>
                                 <p>As I continue as a software developer and video editor, I want to lead projects that join solid engineering with good storytelling. I'm sharpening both the code and the visual side so I can build digital experiences that people enjoy using, and I'm always keen to learn from and work with people building ambitious things.</p>

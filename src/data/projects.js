@@ -1,17 +1,17 @@
 import { lazy } from "react";
 
-import helphiveCard from "../assets/projects/proj7.png";
-import greatReadCard from "../assets/projects/proj8.png";
-import homyzCard from "../assets/projects/proj1.png";
-import deliverooCard from "../assets/projects/proj2.png";
-import lifestreamCard from "../assets/projects/proj3.png";
-import nftCard from "../assets/projects/proj4.png";
-import helphiveBanner from "../assets/banners/proj7.png";
-import greatReadBanner from "../assets/banners/proj8.png";
-import homyzBanner from "../assets/banners/proj1.png";
-import deliverooBanner from "../assets/banners/proj2.png";
-import lifestreamBanner from "../assets/banners/proj3.png";
-import nftBanner from "../assets/banners/proj4.png";
+import helphiveCard from "../assets/projects/proj7.webp";
+import greatReadCard from "../assets/projects/proj8.webp";
+import homyzCard from "../assets/projects/proj1.webp";
+import deliverooCard from "../assets/projects/proj2.webp";
+import lifestreamCard from "../assets/projects/proj3.webp";
+import nftCard from "../assets/projects/proj4.webp";
+import helphiveBanner from "../assets/banners/proj7.webp";
+import greatReadBanner from "../assets/banners/proj8.webp";
+import homyzBanner from "../assets/banners/proj1.webp";
+import deliverooBanner from "../assets/banners/proj2.webp";
+import lifestreamBanner from "../assets/banners/proj3.webp";
+import nftBanner from "../assets/banners/proj4.webp";
 
 // Each link has a kind: live, download, article or source (sets its icon).
 export const projects = [

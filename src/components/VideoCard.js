@@ -3,7 +3,7 @@ import { Play } from "lucide-react";
 const VideoCard = ({ title, description, imgUrl, url }) => (
     <article className="project-card">
         <div className="project-card__media project-card__media--video">
-            <img src={imgUrl} alt="" loading="lazy" />
+            <img src={imgUrl} alt="" width="1280" height="720" loading="lazy" decoding="async" />
             <span className="play-badge" aria-hidden="true"><Play size={22} fill="currentColor" /></span>
         </div>
         <div className="project-card__body">

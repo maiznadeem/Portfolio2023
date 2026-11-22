@@ -11,7 +11,7 @@ import Footer from './components/Footer';
 import ProjectPage from './components/ProjectPage';
 import useRipple from './utils/useRipple';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import './bootstrap.scss';
 import './App.css';
 
 // New page: start at the top. Link to a section (/#projects): scroll to it once rendered,

@@ -8,7 +8,7 @@ export const ProjectCard = ({ slug, name, tagline, summary, image, links }) => {
     return (
         <article className="project-card">
             <div className="project-card__media">
-                <img src={image} alt="" loading="lazy" />
+                <img src={image} alt="" width="1280" height="720" loading="lazy" decoding="async" />
             </div>
             <div className="project-card__body">
                 <p className="project-card__tagline">{tagline}</p>

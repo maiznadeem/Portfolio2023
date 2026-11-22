@@ -1,17 +1,27 @@
 import React from 'react';
 
-const REPO = "https://github.com/maiznadeem/lifestream";
-const SCREENSHOTS = "https://raw.githubusercontent.com/maiznadeem/lifestream/master/docs/screenshots";
+import login from '../../assets/screens/lifestream/login.webp';
+import dashboard from '../../assets/screens/lifestream/dashboard.webp';
+import donors from '../../assets/screens/lifestream/donors.webp';
+import patients from '../../assets/screens/lifestream/patients.webp';
+import appointments from '../../assets/screens/lifestream/appointments.webp';
+import requests from '../../assets/screens/lifestream/requests.webp';
+import stock from '../../assets/screens/lifestream/stock.webp';
+import receipts from '../../assets/screens/lifestream/receipts.webp';
+import staff from '../../assets/screens/lifestream/staff.webp';
+import profile from '../../assets/screens/lifestream/profile.webp';
+
+const REPO = "https://github.com/maiznadeem/Lifestream";
 
 const VIEWS = [
-    ["donors", "Donors"],
-    ["patients", "Patients"],
-    ["appointments", "Appointments"],
-    ["requests", "Requests"],
-    ["stock", "Stock"],
-    ["receipts", "Receipts"],
-    ["staff", "Staff"],
-    ["profile", "Profile"],
+    [donors, "Donors"],
+    [patients, "Patients"],
+    [appointments, "Appointments"],
+    [requests, "Requests"],
+    [stock, "Stock"],
+    [receipts, "Receipts"],
+    [staff, "Staff"],
+    [profile, "Profile"],
 ];
 
 const Lifestream = () => (
@@ -50,18 +60,18 @@ const Lifestream = () => (
 
         <h3>Sign In</h3>
         <figure className="shot">
-            <img src={`${SCREENSHOTS}/login.png`} alt="Sign In Screen" />
+            <img src={login} alt="Sign In Screen" />
         </figure>
 
         <h3>Dashboard</h3>
         <figure className="shot">
-            <img src={`${SCREENSHOTS}/dashboard.png`} alt="Dashboard" loading="lazy" />
+            <img src={dashboard} alt="Dashboard" loading="lazy" />
         </figure>
 
         <h3>Other Views</h3>
         <div className="shot-grid">
-            {VIEWS.map(([file, label]) => (
-                <img key={file} src={`${SCREENSHOTS}/${file}.png`} alt={`${label} View`} loading="lazy" />
+            {VIEWS.map(([src, label]) => (
+                <img key={label} src={src} alt={`${label} View`} loading="lazy" />
             ))}
         </div>
 

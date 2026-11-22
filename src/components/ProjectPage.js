@@ -52,7 +52,7 @@ const ProjectPage = () => {
                     </div>
                 </header>
 
-                <img className="project-page__banner" src={banner} alt={`${name} screens`} />
+                <img className="project-page__banner" src={banner} alt={`${name} screens`} width="1280" height="500" fetchpriority="high" />
 
                 <div className="prose">
                     <Suspense fallback={<p className="prose__loading">Loading project details…</p>}>

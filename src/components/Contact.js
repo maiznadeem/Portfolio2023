@@ -11,7 +11,7 @@ const Contact = () => (
         <Container>
             <Row className="align-items-center">
                 <Col xs={12} md={6} className="contact__art">
-                    <img src={contactImg} alt="" loading="lazy" />
+                    <img src={contactImg} alt="" width="785" height="589" loading="lazy" />
                 </Col>
                 <Col xs={12} md={6}>
                     <h2>Get in touch</h2>

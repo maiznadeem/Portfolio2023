@@ -32,6 +32,13 @@ To preview the production build with the same headers and SPA fallback as the li
 
 The site used to be on Vercel. That project has been deleted.
 
+## Performance conventions
+
+- **Images are WebP.** Convert screenshots and art to WebP (around quality 80) before adding them under `src/assets/`. The only exceptions are the SVG tech logos, the PWA icons and favicon in `public/`, and `public/og-preview.png` (the link-preview image, kept as PNG for social crawlers).
+- **Give every `<img>` its `width` and `height`** so the layout doesn't shift while images load. Below-the-fold images get `loading="lazy"`. A project page's banner is its largest element, so it gets `fetchpriority="high"`.
+- **Fonts and the hero background live in `public/`** under fixed names (`public/fonts/*.woff2`, `public/hero-bg.webp`). That way `public/index.html` can preload them and declare them inline (`@font-face` and the `.banner` background), so the text doesn't reflow when the fonts arrive and the hero paints sooner. If you change one of these files, rename it: `/fonts/*` is cached as immutable.
+- **Bootstrap is trimmed.** [`src/bootstrap.scss`](src/bootstrap.scss) compiles only the parts in use (base styles, containers, grid, tabs and their fade). The navigation is the site's own. `sass` is pinned to `1.77.6`: newer versions print deprecation warnings for Bootstrap 5.3, which a `CI=true` build treats as errors.
+
 ## Deploys (CD): Workers Builds
 
 Every push to `main` is built and deployed by Cloudflare **Workers Builds**, which is connected to this repo:
@@ -66,7 +73,6 @@ A rollback only changes what's served. The next push to `main` deploys again, so
   - `Content-Security-Policy`, with:
     - `script-src 'self'`, plus Wistia (`fast.wistia.com` and `fast.wistia.net`) for the showreel player, and `browser.sentry-cdn.com`, the error reporter Wistia's player loads itself
     - Wistia hosts in `img-src`, `media-src`, `connect-src`, `font-src` and `frame-src`
-    - `raw.githubusercontent.com` in `img-src` for the Lifestream screenshots
     - `style-src 'unsafe-inline'` for the styles Wistia injects
     - `frame-ancestors 'none'`, `object-src 'none'`, `base-uri 'self'`, `form-action 'self'`, `upgrade-insecure-requests`
   - `Strict-Transport-Security: max-age=63072000; includeSubDomains`

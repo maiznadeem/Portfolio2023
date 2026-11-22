@@ -1,0 +1,20 @@
+// Only the parts of Bootstrap 5 this site uses, instead of the whole bootstrap.min.css:
+// containers and the grid (Container, Row, Col), tabs (Tab.Container, Nav) with their fade, and the
+// base styles. Everything else (navigation, buttons, cards, forms...) is the site's own CSS.
+// Keep `sass` pinned below 1.77.7: later versions print deprecation warnings for Bootstrap 5.3,
+// which `CI=true` builds treat as errors.
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/root";
+@import "bootstrap/scss/reboot";
+@import "bootstrap/scss/containers";
+@import "bootstrap/scss/grid";
+@import "bootstrap/scss/transitions";
+@import "bootstrap/scss/nav";
+@import "bootstrap/scss/helpers/visually-hidden";
+
+// The two utility classes the markup uses.
+.align-items-center { align-items: center !important; }
