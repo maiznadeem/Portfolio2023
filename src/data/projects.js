@@ -40,7 +40,7 @@ export const projects = [
         tech: ["React", "Vite", "Tailwind CSS", "Node.js", "MongoDB", "Stripe", "Google Cloud"],
         links: [
             { kind: "live", label: "Visit Great Read", href: "https://greatread.himaiz.com" },
-            { kind: "source", label: "Source code", href: "https://github.com/maiznadeem/great-read" },
+            { kind: "source", label: "Source code", href: "https://github.com/maiznadeem/GreatRead" },
         ],
         Content: lazy(() => import("../projects/content/GreatRead")),
     },
