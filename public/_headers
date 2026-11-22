@@ -1,0 +1,10 @@
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://fast.wistia.com https://fast.wistia.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://*.wistia.com https://*.wistia.net https://raw.githubusercontent.com; media-src 'self' blob: https://*.wistia.com https://*.wistia.net; connect-src 'self' https://*.wistia.com https://*.wistia.net; font-src 'self' data: https://fast.wistia.com; worker-src 'self' blob:; frame-src https://fast.wistia.net; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests
+  Strict-Transport-Security: max-age=63072000; includeSubDomains
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+/static/*
+  Cache-Control: public, max-age=31536000, immutable
