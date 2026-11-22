@@ -10,4 +10,4 @@ This is my portfolio website.
 
 Maiz - contact.maiznadeem@gmail.com
 
-Project Link: [View Github](https://github.com/maiznadeem/Personal-Portfolio)
+Project Link: [View Github](https://github.com/maiznadeem/Portfolio2023)
