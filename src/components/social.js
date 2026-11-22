@@ -6,7 +6,7 @@ export const socials = [
     { label: "LinkedIn", href: "https://www.linkedin.com/in/maiznadeem", Icon: FaLinkedinIn },
     { label: "GitHub", href: "https://github.com/MaizNadeem", Icon: FaGithub },
     { label: "X", href: "https://x.com/heymaiz", Icon: FaXTwitter },
-    { label: "Instagram", href: "https://www.instagram.com/m.maiznadeem", Icon: FaInstagram },
+    { label: "Instagram", href: "https://www.instagram.com/himaiz.nd", Icon: FaInstagram },
 ];
 
 export const SocialLinks = ({ className = "" }) => (
