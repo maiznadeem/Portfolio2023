@@ -69,7 +69,7 @@ const Lifestream = () => (
 
         <h2>Architecture</h2>
         <p>
-            The WPF desktop client talks to an ASP.NET Core API over HTTPS with JWT sign-in. The API runs on Azure Container Apps and is the only code that reaches the Azure SQL database, through EF Core and a managed identity.
+            The WPF desktop client talks to an ASP.NET Core API over HTTPS with JWT sign-in. The API runs on Azure Container Apps behind a Cloudflare Worker, with ingress limited to Cloudflare, and is the only code that reaches the Azure SQL database, through EF Core and a managed identity.
         </p>
         <ul>
             <li><strong>Lifestream.Domain:</strong> Blood types, statuses and the rules for donor eligibility and shelf life.</li>
@@ -90,7 +90,7 @@ const Lifestream = () => (
         <ul>
             <li><strong>.NET 11:</strong> The desktop client, the API and the shared libraries all target .NET 11.</li>
             <li><strong>WPF (Windows Presentation Foundation):</strong> The user interface is built using WPF with the MVVM pattern.</li>
-            <li><strong>ASP.NET Core:</strong> A minimal API with JWT bearer authentication, hosted on Azure Container Apps.</li>
+            <li><strong>ASP.NET Core:</strong> A minimal API with JWT bearer authentication, hosted on Azure Container Apps behind a Cloudflare Worker and Cloudflare's WAF.</li>
             <li><strong>Entity Framework Core and Azure SQL:</strong> The schema exists only as versioned EF Core migrations, and the API connects with a managed identity.</li>
             <li><strong>GitHub Actions and Bicep:</strong> Workflows for CI, the API deployment and secret scanning, with the Azure infrastructure defined in Bicep.</li>
             <li><strong>NuGet Packages:</strong>

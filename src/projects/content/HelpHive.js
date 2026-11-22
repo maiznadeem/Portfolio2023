@@ -93,7 +93,7 @@ const HelpHive = () => (
 
         <h2>Architecture</h2>
         <p>
-            HelpHive is four repositories on one API. The web app and the admin console are hosted on Firebase Hosting and deployed by GitHub Actions. The API runs on Google Cloud Run from a Docker image that Cloud Build makes on every push to main, with MongoDB Atlas as the database. Google Cloud Tasks runs the scheduled jobs (booking expiry, earning release, chat windows), and Google Cloud Storage holds documents and photos.
+            HelpHive is four repositories on one API. The web app and the admin console are static builds served from Cloudflare Workers and deployed by Workers Builds. The API runs on Google Cloud Run behind a Cloudflare Worker, so traffic only reaches it through Cloudflare's WAF, from a Docker image that Cloud Build makes on every push to main, with MongoDB Atlas as the database. Google Cloud Tasks runs the scheduled jobs (booking expiry, earning release, chat windows), and Google Cloud Storage holds documents and photos.
         </p>
         <ul>
             <li><strong><a href={`${ORG}/helphive-web`} target="_blank" rel="noopener noreferrer">helphive-web</a>:</strong> The customer and provider web app, a progressive web app with web push.</li>
@@ -108,7 +108,7 @@ const HelpHive = () => (
             <li><strong>Admin console:</strong> React 18, TypeScript, Vite, MUI 6, Redux Toolkit with RTK Query, React Router 7 and ECharts.</li>
             <li><strong>Mobile app:</strong> Expo SDK 58, React Native 0.88 on the New Architecture, React 19, TypeScript, React Navigation 7, Redux Toolkit, Stripe React Native, react-native-maps, CometChat and OneSignal.</li>
             <li><strong>API:</strong> Node.js 22, TypeScript, Express, MongoDB with Mongoose, Stripe (payments, Connect payouts and webhooks), Google Cloud Tasks and Cloud Storage, Resend with React Email, and WebSockets.</li>
-            <li><strong>Infrastructure:</strong> Google Cloud Run, Cloud Build, Firebase Hosting, MongoDB Atlas, GitHub Actions and Cloudflare DNS.</li>
+            <li><strong>Infrastructure:</strong> Cloudflare (Workers, WAF), Google Cloud Run, Cloud Build, MongoDB Atlas and GitHub Actions.</li>
         </ul>
     </>
 );
